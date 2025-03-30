@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205.76 218.44">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 5px;
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Vector" class="cls-1" d="M82.03,201.05C27.81,189.53-6.8,136.25,4.71,82.03,16.22,27.82,69.51-6.8,123.72,4.71c54.22,11.51,88.84,64.8,77.32,119.02-3.8,17.88-12.14,33.63-23.56,46.3l-1.16,45.92-42.43-17.61c-16.21,5.29-33.99,6.51-51.87,2.71Z"/>
+  <g id="Free_Remix_Food_Drink_serving-dome--cook-tool-dome-kitchen-serving-paltter-dish-tools-food-kitchenware" data-name="Free Remix/Food Drink/serving-dome--cook-tool-dome-kitchen-serving-paltter-dish-tools-food-kitchenware">
+    <path id="Union" class="cls-2" d="M102.88,54.13c2.32,0,4.21,1.88,4.21,4.21v5.88c24.08,2.16,42.9,22.72,42.9,47.28,0,5.69-4.61,10.44-10.39,10.44h-73.43c-5.79,0-10.39-4.75-10.39-10.44,0-24.56,18.82-45.12,42.9-47.28v-5.88c0-2.32,1.88-4.21,4.21-4.21ZM102.88,72.44c-21.33,0-38.7,17.64-38.7,39.06,0,1.14.93,2.03,1.98,2.03h73.43c1.05,0,1.98-.89,1.98-2.03,0-21.42-17.37-39.06-38.7-39.06ZM61.67,129.24c-3.25,0-5.89,2.64-5.89,5.89s2.64,5.89,5.89,5.89h82.42c3.25,0,5.89-2.64,5.89-5.89s-2.64-5.89-5.89-5.89H61.67Z"/>
+  </g>
+</svg>

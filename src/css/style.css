@@ -1,14 +1,11 @@
+/*a No-Scroll, Screen-Fitting Website, got from ChatGPT, prompt: how can I create a website that does not scroll (adapt to phone screen)*/
 /*
-CSS controls the styling of the page.
-You can write a color in directly, or use variables.
-Try changing the color from blue to red in the
-primary color variable below.
-*/
-
-:root {
-	--color-primary: blue;
-	--color-secondary: #c00;
+body {
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
 }
+*/
 
 /*
 CSS doesn't allow variables to be used in media
@@ -22,14 +19,18 @@ to help you out.
 	--size-xl: 1200px;
 */
 
-h1 {
-	color: var(--color-primary);
-}
-
-/* This uses the same value as --size-xs. */
-@media screen and (width >= 320px) {
+/* This uses the same value as --size-xs.
+@media screen and (width >=320px) {
 	.content-container {
 		margin: 0 auto;
 		max-width: 768px;
 	}
 }
+	*/
+
+/* for scrolling area inside of the page
+	.scroll-box {
+		overflow-y: auto;
+		max-height: 60vh;
+	 }
+	 /*
