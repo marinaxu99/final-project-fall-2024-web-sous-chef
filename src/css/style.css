@@ -1,11 +1,136 @@
+/*links*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap');
+
+/*layout*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+main> :not(nav) {
+	margin: 30px;
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 5px;
+}
+
 /*a No-Scroll, Screen-Fitting Website, got from ChatGPT, prompt: how can I create a website that does not scroll (adapt to phone screen)*/
-/*
+
 body {
 	height: 100vh;
 	margin: 0;
 	overflow: hidden;
 }
-*/
+
+/*typography*/
+.chat-robot p {
+	font-family: "Press Start 2P", system-ui;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.75rem;
+}
+
+h1 {
+	font-family: "Bungee", sans-serif;
+	font-size: 1.5rem;
+}
+
+h2 {
+	font-family: "Bungee", sans-serif;
+	font-size: 0.8rem;
+}
+
+nav,
+button,
+::placeholder {
+	font-family: "Orbitron", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.75rem;
+	text-transform: lowercase;
+}
+
+
+
+
+/*Homepage*/
+.menu-container {
+	display: flex;
+	flex-direction: row;
+	gap: auto;
+	height: 30vh;
+	justify-content: center;
+}
+
+.menu-container a {
+	width: auto;
+	height: auto;
+	width: 150px;
+	height: auto;
+}
+
+/*making the menu align up and down*/
+.menu-recipe {
+	align-self: flex-start;
+}
+
+.menu-toolkit {
+	align-self: flex-end;
+}
+
+/*prepare the menu container to appear after clicking, method from ChatGPT, prompt: how to make a html container to appear when I click on an img, I use class tags*/
+.menu-container {
+	visibility: visible;
+	pointer-events: auto;
+	transition: opacity 0.5 ease;
+}
+
+.menu-container.hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+
+.intro-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+	gap: 5px;
+}
+
+.intro-container img {
+	width: 100%;
+	height: auto;
+}
+
+.thought-bubble-container {
+	position: absolute;
+	width: 70px;
+	top: 20px;
+	left: 0px;
+	text-align: center;
+}
+
+.thought-bubble {
+	width: 20px;
+	height: auto;
+}
+
+
+
+
+
+
+
 
 /*
 CSS doesn't allow variables to be used in media
