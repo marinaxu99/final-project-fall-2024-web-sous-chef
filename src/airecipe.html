@@ -25,21 +25,23 @@
 		<div class="ai-recipe-generator">
 			<!-- I'm guess i should start another semantic list since this is a new html page? But I also want to try using the same html file for all pages if possible -->
 			<h1>AI Recipe Generator</h1>
-			<div class="chat-box">
+			<div class="content-container">
 				<div class="chat-robot">
 					<p>Chef! What ingredients do you have?</p>
 					<img src="images/robot-head.svg" alt="robot head icon">
 				</div>
-				<div class="response-box">
-					<!--chatbox code got from ChatGPT, prompt: how to create a type box, but just as a space holder to start in html-->
-					<input type="text" placeholder="Type here..." />
-					<button>Send</button>
+				<div class="chat-user">
+					<div class="response-box">
+						<!--chatbox code got from ChatGPT, prompt: how to create a type box, but just as a space holder to start in html-->
+						<input type="text" placeholder="Type here..." />
+						<button>Send</button>
+					</div>
+					<a href="mystery.html" title="Go to Mystery Recipe Page">
+						<button class="generate-mystery-recipe-button">Generate Mystery Recipe</button></a>
 				</div>
-				<a href="mystery.html" title="Go to Mystery Recipe Page">
-					<button class="generate-mystery-recipe-button">Generate Mystery Recipe</button></a>
 			</div>
 		</div>
-		
+
 	</main>
 	<!--link to JS file.-->
 	<script src="js/script.js"></script>

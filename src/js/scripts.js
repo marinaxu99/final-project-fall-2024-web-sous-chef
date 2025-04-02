@@ -23,9 +23,9 @@ setTimeout(() => {
 }, 2000);
 
 //make the menu container appear when the robot is clicked
-const robot = document.querySelector('.robot-click');
-const popup = document.querySelector('.menu-container');
+const menuTrigger = document.querySelector('.robot-click, .thought-bubble-container');
+const menuPopup = document.querySelector('.menu-container');
 
-robot.addEventListener('click', () => {
-	popup.classList.remove('hidden');
+menuTrigger.addEventListener('click', () => {
+	menuPopup.classList.remove('hidden');
 });

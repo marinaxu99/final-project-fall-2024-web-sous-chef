@@ -28,8 +28,15 @@ nav {
 /*a No-Scroll, Screen-Fitting Website, got from ChatGPT, prompt: how can I create a website that does not scroll (adapt to phone screen)*/
 
 body {
-	height: 100vh;
-	margin: 0;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
 }
 
 /*typography*/
@@ -37,10 +44,16 @@ body {
 	font-family: "Press Start 2P", system-ui;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 0.75rem;
+	font-size: 0.55rem;
+	line-height: 1.5;
 }
 
 h1 {
+	font-family: "Bungee", sans-serif;
+	font-size: 1rem;
+}
+
+.web-title {
 	font-family: "Bungee", sans-serif;
 	font-size: 1.5rem;
 }
@@ -60,8 +73,15 @@ button,
 	text-transform: lowercase;
 }
 
-
-
+.toolkit-item p,
+.volume-convert-container p {
+	font-family: "Orbitron", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.6rem;
+	text-align: center;
+	max-width: 75px;
+}
 
 /*Homepage*/
 /*make the credit appear when info icon is clicked, GPT prompt:I want to be able to click an img icon "info icon" in the navigation, and then the right side of navigation saying "made by: me" appears with an animation that makes the sentence appear from left to right*/
@@ -137,8 +157,6 @@ button,
 	pointer-events: none;
 }
 
-
-
 .intro-container {
 	display: flex;
 	flex-direction: column;
@@ -165,15 +183,293 @@ button,
 .thought-bubble {
 	width: 100%;
 	max-width: 75px;
-	height auto;
+	height: auto;
+}
+
+/*AI Recipe Generator PAGE, with help of Claude.ai for aligning items*/
+.ai-recipe-generator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.chat-robot {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+	align-items: flex-start;
+	justify-content: center;
+	margin-top: 5vh;
+}
+
+.response-box {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+.chat-user {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+	margin-bottom: 10px;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+/*Mystery Box PAGE*/
+.mystery-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.mystery-box {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+	margin-bottom: 30px;
+	align-items: center;
+	justify-content: center;
+}
+
+/*Your Mystery Recipe PAGE*/
+.reveal-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.source-button {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+	margin-bottom: 20px;
+	align-items: center;
+	justify-content: center;
 }
 
 
+/*Cooking Toolkit PAGE*/
+.toolkit-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.toolkit-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	width: 100%;
+	align-items: center;
+	justify-items: center;
+}
+
+.toolkit-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/*make the first item start on 2nd column, with help of Claude.ai*/
+.toolkit-list .toolkit-item:first-child {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.toolkit-list .toolkit-item:nth-child(2) {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+.toolkit-list .toolkit-item:nth-child(3) {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+/*Temperature Converter PAGE*/
+.temperature-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.temp-convert-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.number-container {
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.convert-item {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	padding: 0 10px 0 10px;
+}
+
+.convert-item input {
+	width: 20vw;
+	max-width: 150px;
+}
 
 
+/*Cooking Timer PAGE*/
+.cooking-timer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
 
+.timer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: auto;
+	margin-bottom: 50px;
+}
 
+.timer-button {
+	display: flex;
+	flex-direction: row;
+	gap: 10vw;
+	align-items: center;
+	justify-content: center;
+	max-width: 300px;
+}
 
+.timer-button button {
+	padding: 0 0.5rem 0 0.5rem;
+}
+
+.timer-display {
+	background-color: #d9d9d9;
+	background-size: auto;
+	padding: 1rem 1.5rem;
+	border-radius: 10px;
+	margin: auto;
+	font-family: 'orbitron', sans-serif;
+	font-size: 2rem;
+	font-weight: 600;
+	letter-spacing: 2px;
+}
+
+.function-buttons {
+	display: flex;
+	flex-direction: row;
+	gap: auto;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	justify-content: space-between;
+	padding: 0 10px 0 10px;
+	max-width: 300px;
+}
+
+.start-and-pause-buttons {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+/*Voumne Converter PAGE*/
+.volume-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.volume-convert-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: auto;
+	margin-bottom: 50px;
+}
+
+.volume-convert-unit {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	width: 70vw;
+	max-width: 300px;
+	gap: 20px;
+
+}
+
+.volume-convert-number {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.volume-convert-input {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	width: 70vw;
+	max-width: 300px;
+}
+
+.volume-convert-input input {
+	width: 40vw;
+	max-width: 150px;
+}
+
+.volume-convert-input p {
+	width: 100%;
+}
 
 /*
 CSS doesn't allow variables to be used in media
