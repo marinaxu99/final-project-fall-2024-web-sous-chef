@@ -6,6 +6,16 @@
 // - Run npm run test regularly to check autograding
 // - You'll need to link this file to your HTML :)
 
+
+//for the credit to appear after the info icon is clicked
+const infoIcon = document.querySelector('.info-icon');
+const creditText = document.querySelector('.credit-text');
+
+infoIcon.addEventListener('click', () => {
+	creditText.classList.toggle('hidden');
+});
+
+
 //for thought bubble changing on the homepage, gotten from GPT, prompt: how to make an img change into another after 1 second of delay
 const img = document.querySelector('.thought-bubble');
 setTimeout(() => {

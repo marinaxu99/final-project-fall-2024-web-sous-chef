@@ -9,7 +9,12 @@
 }
 
 main> :not(nav) {
-	margin: 30px;
+	margin: 5vh 9.5vw 5vh 9.5vw;
+}
+
+img {
+	max-width: 100%;
+	display: block;
 }
 
 nav {
@@ -17,7 +22,7 @@ nav {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 5px;
+	padding: 2vw;
 }
 
 /*a No-Scroll, Screen-Fitting Website, got from ChatGPT, prompt: how can I create a website that does not scroll (adapt to phone screen)*/
@@ -25,7 +30,6 @@ nav {
 body {
 	height: 100vh;
 	margin: 0;
-	overflow: hidden;
 }
 
 /*typography*/
@@ -60,6 +64,42 @@ button,
 
 
 /*Homepage*/
+/*make the credit appear when info icon is clicked, GPT prompt:I want to be able to click an img icon "info icon" in the navigation, and then the right side of navigation saying "made by: me" appears with an animation that makes the sentence appear from left to right*/
+.nav-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	padding: 0;
+	height: 30px;
+}
+
+.info-icon {
+	cursor: pointer;
+}
+
+.credit-text.hidden {
+	opacity: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+.credit-text {
+	font-size: 0.2 rem;
+	white-space: nowrap;
+	transition: all 0.5s ease;
+	opacity: 1;
+	width: 200px;
+}
+
+
+/*here is the layout*/
+.home-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
 .menu-container {
 	display: flex;
 	flex-direction: row;
@@ -69,9 +109,7 @@ button,
 }
 
 .menu-container a {
-	width: auto;
-	height: auto;
-	width: 150px;
+	width: 50vw;
 	height: auto;
 }
 
@@ -85,11 +123,13 @@ button,
 }
 
 /*prepare the menu container to appear after clicking, method from ChatGPT, prompt: how to make a html container to appear when I click on an img, I use class tags*/
+
 .menu-container {
 	visibility: visible;
 	pointer-events: auto;
 	transition: opacity 0.5 ease;
 }
+
 
 .menu-container.hidden {
 	opacity: 0;
@@ -98,31 +138,34 @@ button,
 }
 
 
+
 .intro-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
 	position: relative;
-	gap: 5px;
+	gap: 0.5rem;
 }
 
 .intro-container img {
-	width: 100%;
+	max-width: 100%;
 	height: auto;
 }
 
 .thought-bubble-container {
 	position: absolute;
-	width: 70px;
-	top: 20px;
-	left: 0px;
+	width: 25vw;
+	max-width: 75px;
+	top: 0px;
+	right: 150px;
 	text-align: center;
 }
 
 .thought-bubble {
-	width: 20px;
-	height: auto;
+	width: 100%;
+	max-width: 75px;
+	height auto;
 }
 
 
