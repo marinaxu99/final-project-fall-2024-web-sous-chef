@@ -30,12 +30,17 @@
 					<p>Chef! What ingredients do you have?</p>
 					<img src="images/robot-head.svg" alt="robot head icon">
 				</div>
+				<!--chat box code got from ChatGPT, prompt: how can I make a chatbox on my website, where the user can input the ingredients they have, and the "robot" will respond with a ai generated recipe? here is the webpage design, let me know how.-->
+
+				<div class="chat-log"></div>
+
 				<div class="chat-user">
 					<div class="response-box">
 						<!--chatbox code got from ChatGPT, prompt: how to create a type box, but just as a space holder to start in html-->
-						<input type="text" placeholder="Type here..." />
-						<button>Send</button>
+						<input type="text" class="user-input" placeholder="Enter ingredients..." />
+						<button class="send-btn">Send</button>
 					</div>
+
 					<a href="mystery.html" title="Go to Mystery Recipe Page">
 						<button class="generate-mystery-recipe-button">Generate Mystery Recipe</button></a>
 				</div>
@@ -44,7 +49,7 @@
 
 	</main>
 	<!--link to JS file.-->
-	<script src="js/script.js"></script>
+	<script src="js/scripts.js"></script>
 </body>
 
 </html>

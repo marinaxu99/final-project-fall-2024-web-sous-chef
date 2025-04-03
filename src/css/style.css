@@ -1,5 +1,5 @@
 /*links*/
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@400..900&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@500&family=Press+Start+2P&display=swap');
 
 /*layout*/
 * {
@@ -41,7 +41,7 @@ main {
 
 /*typography*/
 .chat-robot p {
-	font-family: "Press Start 2P", system-ui;
+	font-family: "Press Start 2P", sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	font-size: 0.55rem;
@@ -143,7 +143,6 @@ button,
 }
 
 /*prepare the menu container to appear after clicking, method from ChatGPT, prompt: how to make a html container to appear when I click on an img, I use class tags*/
-
 .menu-container {
 	visibility: visible;
 	pointer-events: auto;
@@ -210,10 +209,69 @@ button,
 	margin-top: 5vh;
 }
 
+/*chat box for user input, with help of GPT*/
+.chat-log {
+	width: 100%;
+	max-height: 50vh;
+	overflow-y: auto;
+	padding: 1rem;
+	font-size: 0.75rem;
+}
+
+.user-message,
+.bot-message {
+	margin: 0.5rem 0;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.75rem;
+}
+
+.user-message {
+	background-color: #d9d9d9;
+	text-align: right;
+}
+
+.bot-message {
+	font-family: "Orbitron", sans-serif;
+	text-align: left;
+	font-size: 0.7rem;
+	line-height: 1.5;
+}
+
+/*to style the ai recipe and create a copy button, 2 codes from GPT*/
+.bot-message p {
+	margin-bottom: 0.75rem;
+	line-height: 1.5;
+}
+
+.copy-recipe-button {
+	margin-top: 1rem;
+	padding: 0.4rem 1rem;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 0.7rem;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #eee;
+	transition: background-color 0.2s ease;
+}
+
+.copy-recipe-button:hover {
+	background-color: #ccc;
+}
+
+
+.bot-message strong {
+	font-weight: 700;
+	font-size: 0.8rem;
+}
+
+
 .response-box {
 	display: flex;
-	flex-direction: row;
-	gap: 1rem;
+	gap: 0.5rem;
+	justify-content: center;
 }
 
 .chat-user {
@@ -224,6 +282,11 @@ button,
 	align-items: center;
 	justify-content: center;
 	gap: 0.5rem;
+}
+
+/*for chatting functions*/
+.send-btn {
+	cursor: pointer;
 }
 
 /*Mystery Box PAGE*/
