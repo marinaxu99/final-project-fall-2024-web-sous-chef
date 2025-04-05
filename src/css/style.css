@@ -9,7 +9,19 @@
 }
 
 main> :not(nav) {
-	margin: 5vh 9.5vw 5vh 9.5vw;
+	margin: 5vh 8vw 5vh 8vw;
+}
+
+@media screen and (min-width: 500px) {
+	main> :not(nav) {
+		margin: 6vh 9vw 6vh 9vw;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	main> :not(nav) {
+		margin: 8vh 10vw 8vh 10vw;
+	}
 }
 
 img {
@@ -83,6 +95,67 @@ button,
 	max-width: 75px;
 }
 
+
+/*easy upsize with help of GPT: can you recommend ratios to change the layout and font of my mobile css into tablet at min-width 500px and laptop at 1000px?*/
+@media screen and (min-width: 500px) {
+	.chat-robot p {
+		font-size: 0.65rem;
+	}
+
+	h1 {
+		font-size: 1.25rem;
+	}
+
+	h2 {
+		font-size: 1rem;
+	}
+
+	.web-title {
+		font-size: 1.75rem;
+	}
+
+	nav,
+	button,
+	::placeholder {
+		font-size: 0.85rem;
+	}
+
+	.toolkit-item p,
+	.volume-convert-container p {
+		font-size: 0.7rem;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.chat-robot p {
+		font-size: 0.75rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	h2 {
+		font-size: 1.2rem;
+	}
+
+	.web-title {
+		font-size: 2rem;
+	}
+
+	nav,
+	button,
+	::placeholder {
+		font-size: 1rem;
+	}
+
+	.toolkit-item p,
+	.volume-convert-container p {
+		font-size: 0.8rem;
+	}
+}
+
+
 /*Homepage*/
 /*make the credit appear when info icon is clicked, GPT prompt:I want to be able to click an img icon "info icon" in the navigation, and then the right side of navigation saying "made by: me" appears with an animation that makes the sentence appear from left to right*/
 .nav-info {
@@ -90,8 +163,8 @@ button,
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
-	padding: 0;
-	height: 30px;
+	padding: 0 1vw 0 1vw;
+	height: 8vh;
 }
 
 .info-icon {
@@ -105,13 +178,27 @@ button,
 }
 
 .credit-text {
-	font-size: 0.2 rem;
+	font-size: 0.7rem;
 	white-space: nowrap;
 	transition: all 0.5s ease;
 	opacity: 1;
-	width: 200px;
+	width: 190px;
 }
 
+/*resize for credit text*/
+@media screen and (min-width: 500px) {
+	.credit-text {
+		font-size: 0.8rem;
+		width: 200px
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.credit-text {
+		font-size: 1rem;
+		width: 250px
+	}
+}
 
 /*here is the layout*/
 .home-container {
@@ -123,9 +210,13 @@ button,
 .menu-container {
 	display: flex;
 	flex-direction: row;
-	gap: auto;
 	height: 30vh;
+	display: flex;
+	gap: 5vw;
 	justify-content: center;
+	align-items: center;
+	margin: 2vh 0 2vh 0;
+	width: 100vw;
 }
 
 .menu-container a {
@@ -143,12 +234,22 @@ button,
 }
 
 /*prepare the menu container to appear after clicking, method from ChatGPT, prompt: how to make a html container to appear when I click on an img, I use class tags*/
+.home-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
 .menu-container {
 	visibility: visible;
 	pointer-events: auto;
 	transition: opacity 0.5 ease;
+	width: 100vw;
+	max-height: 100vh;
+	gap: 5vw;
+	padding: 0 5vw 0 5vw;
 }
-
 
 .menu-container.hidden {
 	opacity: 0;
@@ -170,6 +271,15 @@ button,
 	height: auto;
 }
 
+.web-name {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	text-align: right;
+	flex: 1;
+}
+
+
 .thought-bubble-container {
 	position: absolute;
 	width: 25vw;
@@ -183,6 +293,35 @@ button,
 	width: 100%;
 	max-width: 75px;
 	height: auto;
+}
+
+@media screen and (min-width: 500px) {
+	.intro-container {
+		flex-direction: row;
+		flex-direction: row-reverse;
+		align-items: center;
+	}
+
+	.thought-bubble-container {
+		right: 150px;
+	}
+
+	.web-name {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		text-align: left;
+	}
+
+	.menu-container {
+		max-width: 500px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.menu-container {
+		max-width: 600px;
+	}
 }
 
 /*AI Recipe Generator PAGE, with help of Claude.ai for aligning items*/
@@ -201,12 +340,24 @@ button,
 }
 
 .chat-robot {
+	width: 100%;
+	padding: 0 5vw 0 5vw;
 	display: flex;
 	flex-direction: column;
 	gap: 0.8rem;
 	align-items: flex-start;
 	justify-content: center;
 	margin-top: 5vh;
+}
+
+@media screen and (min-width: 500px) {
+	.chat-robot {
+		flex-direction: row;
+		flex-direction: row-reverse;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
 }
 
 /*chat box for user input, with help of GPT*/
