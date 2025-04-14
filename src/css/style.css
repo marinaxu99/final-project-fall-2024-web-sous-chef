@@ -716,12 +716,30 @@ input[type="number"] {
 
 }
 
+
+/*make the selected button have a different background color, GPT:can I make the selected units to have darken background
+*/
+.unit-btn.selected {
+	background-color: #333;
+	color: white;
+	border: 1px solid #000;
+	transition: background-color 0.2s ease;
+	border-radius: 5px;
+}
+
 .volume-convert-number {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
 	align-items: center;
 	justify-content: center;
+}
+
+@media screen and (min-width: 500px) {
+	.volume-convert-number {
+		gap: 1rem;
+	}
+
 }
 
 .volume-convert-input {
@@ -741,6 +759,13 @@ input[type="number"] {
 
 .volume-convert-input p {
 	width: 100%;
+	height: 100%;
+	background-color: #D9D9D9;
+	height: 15px;
+	border-radius: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /*

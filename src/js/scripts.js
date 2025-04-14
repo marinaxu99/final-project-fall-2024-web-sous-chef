@@ -249,3 +249,106 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 });
 
+//now the volume converter page, GPT: I want the users to choose any two units and input number to get it converted to the other
+document.addEventListener("DOMContentLoaded", function () {
+	const unitButtons = document.querySelectorAll(".unit-btn");
+	const inputs = document.querySelectorAll('input[name^="volume-input"]');
+	const leftLabel = document.querySelector(".unit-label-left");
+	const rightLabel = document.querySelector(".unit-label-right");
+	const convertBtn = document.querySelector(".convert-volume-btn");
+
+	if (unitButtons.length < 4 || inputs.length !== 2 || !leftLabel || !rightLabel || !convertBtn) return;
+
+	const conversionToML = {
+		ml: 1,
+		cups: 240,
+		tablespoon: 15,
+		teaspoon: 5
+	};
+
+	let selectedUnits = []; // Store selected units (max 2)
+	let lastChanged = "left";
+
+	// Highlight selected unit buttons
+	function updateButtonState() {
+		unitButtons.forEach(btn => {
+			if (selectedUnits.includes(btn.dataset.unit)) {
+				btn.classList.add("selected");
+			} else {
+				btn.classList.remove("selected");
+			}
+		});
+	}
+
+	function resetConverter() {
+		selectedUnits = [];
+		inputs[0].value = "";
+		inputs[1].value = "";
+		leftLabel.textContent = "";
+		rightLabel.textContent = "";
+		updateButtonState();
+	}
+
+	unitButtons.forEach(button => {
+		button.addEventListener("click", () => {
+			const unit = button.dataset.unit;
+
+			if (selectedUnits.includes(unit)) {
+				selectedUnits = selectedUnits.filter(u => u !== unit);
+			} else if (selectedUnits.length < 2) {
+				selectedUnits.push(unit);
+			} else {
+				resetConverter();
+				selectedUnits.push(unit);
+			}
+
+			updateButtonState();
+			leftLabel.textContent = selectedUnits[0] || "";
+			rightLabel.textContent = selectedUnits[1] || "";
+		});
+	});
+
+	// Track which input was changed last
+	inputs[0].addEventListener("input", () => lastChanged = "left");
+	inputs[1].addEventListener("input", () => lastChanged = "right");
+
+	function animateNumberChange(inputElement, targetValue) {
+		const duration = 500;
+		const start = parseFloat(inputElement.value) || 0;
+		const end = parseFloat(targetValue);
+		const startTime = performance.now();
+
+		function update(currentTime) {
+			const elapsed = currentTime - startTime;
+			const progress = Math.min(elapsed / duration, 1);
+			const currentValue = start + (end - start) * progress;
+			inputElement.value = currentValue.toFixed(2);
+
+			if (progress < 1) {
+				requestAnimationFrame(update);
+			}
+		}
+
+		requestAnimationFrame(update);
+	}
+
+	convertBtn.addEventListener("click", () => {
+		if (selectedUnits.length !== 2) {
+			alert("Please select two units to convert between.");
+			return;
+		}
+
+		const fromUnit = selectedUnits[lastChanged === "left" ? 0 : 1];
+		const toUnit = selectedUnits[lastChanged === "left" ? 1 : 0];
+		const fromInput = lastChanged === "left" ? inputs[0] : inputs[1];
+		const toInput = lastChanged === "left" ? inputs[1] : inputs[0];
+
+		const inputValue = parseFloat(fromInput.value);
+		if (isNaN(inputValue)) return;
+
+		const inML = inputValue * conversionToML[fromUnit];
+		const converted = inML / conversionToML[toUnit];
+
+		animateNumberChange(toInput, converted);
+	});
+});
