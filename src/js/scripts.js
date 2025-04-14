@@ -131,3 +131,121 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 });
+
+//your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
+document.addEventListener("DOMContentLoaded", async () => {
+	const outputBox = document.querySelector(".recipe-reveal-box");
+	const sourceBtn = document.querySelector(".source-button a");
+
+	const params = new URLSearchParams(window.location.search);
+	const shouldGenerate = params.get('generate') === 'true';
+
+	if (shouldGenerate && outputBox && sourceBtn) {
+		const API_KEY = "AIzaSyAraWQNTPxoe4D8bv0upb9o-j-pOGNMpZ0"; // Replace with your key
+		outputBox.innerHTML = `<p>Picking a viral recipe...</p>`;
+
+		try {
+			// Search using viral/trending recipe keywords
+			const query = "easy recipe, viral recipe, TikTok recipe, TikTok food, chinese recipe, korean recipe, 30-minute dinner";
+			const response = await fetch(
+				`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q=${encodeURIComponent(query)}&order=viewCount&key=${API_KEY}`
+			);
+
+			const data = await response.json();
+
+			if (data.items && data.items.length > 0) {
+				const randomVideo = data.items[Math.floor(Math.random() * data.items.length)];
+				const title = randomVideo.snippet.title;
+				const channel = randomVideo.snippet.channelTitle;
+				const videoId = randomVideo.id.videoId;
+				const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
+
+				outputBox.innerHTML = `
+				<p>Here is a popular one!</p>
+					<p><strong>🍽️ ${title}</strong></p>
+					<p><em>by ${channel}</em></p>
+					<iframe width="100%" height="215" src="https://www.youtube.com/embed/${videoId}"
+						title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen>
+					</iframe>
+				`;
+
+				sourceBtn.href = videoUrl;
+				sourceBtn.style.display = "inline-block";
+			} else {
+				outputBox.innerHTML = `<p>No popular recipes found right now.</p>`;
+			}
+		} catch (err) {
+			outputBox.innerHTML = `<p>Something went wrong. Please try again.</p>`;
+			console.error(err);
+		}
+	}
+});
+
+//for the another recipe button
+document.addEventListener("DOMContentLoaded", function () {
+	const retryBtn = document.querySelector('.another-recipe-button');
+
+	if (retryBtn) {
+		retryBtn.addEventListener('click', function () {
+			location.reload();
+		});
+	}
+});
+
+//for the temperature conversion page, GPT prompt: I want the user to be able to input number in front of either C or F to get the other one.
+//then added cute animation to the numbers, counting up to the converted degrees
+document.addEventListener("DOMContentLoaded", function () {
+	const convertBtn = document.querySelector('.convert-click img');
+	const inputs = document.querySelectorAll('input[name="temperature-input"]');
+
+	let lastChanged = null;
+
+	function animateNumberChange(inputElement, targetValue) {
+		const duration = 500;
+		const start = parseFloat(inputElement.value) || 0;
+		const end = parseFloat(targetValue);
+		const startTime = performance.now();
+
+		function update(currentTime) {
+			const elapsed = currentTime - startTime;
+			const progress = Math.min(elapsed / duration, 1);
+			const currentValue = start + (end - start) * progress;
+			inputElement.value = currentValue.toFixed(2);
+
+			if (progress < 1) {
+				requestAnimationFrame(update);
+			}
+		}
+
+		requestAnimationFrame(update);
+	}
+
+	if (convertBtn && inputs.length === 2) {
+		const celsiusInput = inputs[0];
+		const fahrenheitInput = inputs[1];
+
+		// Track last changed input
+		celsiusInput.addEventListener('input', () => lastChanged = 'c');
+		fahrenheitInput.addEventListener('input', () => lastChanged = 'f');
+
+		convertBtn.addEventListener('click', () => {
+			const celsiusVal = celsiusInput.value.trim();
+			const fahrenheitVal = fahrenheitInput.value.trim();
+
+			if (lastChanged === 'c' && celsiusVal !== '') {
+				const c = parseFloat(celsiusVal);
+				const f = (c * 9 / 5) + 32;
+				animateNumberChange(fahrenheitInput, f);
+				if (c >= 100) animateThermometerToHot();
+			} else if (lastChanged === 'f' && fahrenheitVal !== '') {
+				const f = parseFloat(fahrenheitVal);
+				const c = (f - 32) * 5 / 9;
+				animateNumberChange(celsiusInput, c);
+				if (f >= 212) animateThermometerToHot();
+			}
+		});
+	}
+});
+

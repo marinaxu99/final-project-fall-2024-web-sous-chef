@@ -31,20 +31,20 @@
 				</div>
 				<div class="volume-convert-container">
 					<div class="volume-convert-unit">
-						<button>ml</button>
-						<button>tablespoon</button>
-						<button>cups</button>
-						<button>teaspoon</button>
+						<button class="unit-btn left" data-unit="ml">ml</button>
+						<button class="unit-btn right" data-unit="tablespoon">tablespoon</button>
+						<button class="unit-btn left" data-unit="cups">cups</button>
+						<button class="unit-btn right" data-unit="teaspoon">teaspoon</button>
 					</div>
 					<div class="volume-convert-number">
 						<div class="volume-convert-input">
-							<input type="number" name="volume-input" placeholder="100">
-							<p>mililiters</p>
+							<input type="number" name="volume-input left-input" placeholder="100">
+							<p class="unit-label-left">mililiters</p>
 						</div>
-						<img src="images/convert.svg" alt="convert icon">
+						<img src="images/convert.svg" alt="convert icon" class="convert-volume-btn">
 						<div class="volume-convert-input">
-							<input type="number" name="volume-input" placeholder="20.29">
-							<p>teaspoons</p>
+							<input type="number" name="volume-input right-input" placeholder="20.29">
+							<p class="unit-label-right">teaspoons</p>
 						</div>
 					</div>
 				</div>
