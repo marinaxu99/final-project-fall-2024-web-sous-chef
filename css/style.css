@@ -1,0 +1,810 @@
+/*links*/
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@500&family=Press+Start+2P&display=swap');
+
+/*layout*/
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+main> :not(nav) {
+	margin: 5vh 8vw 5vh 8vw;
+}
+
+@media screen and (min-width: 500px) {
+	main> :not(nav) {
+		margin: 8vh 9vw 8vh 9vw;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	main> :not(nav) {
+		margin: 9vh 10vw 9vh 10vw;
+	}
+}
+
+img,
+iframe {
+	max-width: 100%;
+	display: block;
+}
+
+nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2vw;
+}
+
+/*a No-Scroll, Screen-Fitting Website, got from ChatGPT, prompt: how can I create a website that does not scroll (adapt to phone screen)*/
+
+body {
+	display: flex;
+	flex-direction: column;
+	max-height: 100vh;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+/*typography*/
+.chat-robot p,
+.chat-robot-reveal p {
+	font-family: "Press Start 2P", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.55rem;
+	line-height: 1.5;
+}
+
+h1 {
+	font-family: "Bungee", sans-serif;
+	font-size: 1rem;
+}
+
+.web-title {
+	font-family: "Bungee", sans-serif;
+	font-size: 1.5rem;
+}
+
+h2 {
+	font-family: "Bungee", sans-serif;
+	font-size: 0.8rem;
+}
+
+nav,
+button,
+::placeholder {
+	font-family: "Orbitron", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.75rem;
+	text-transform: lowercase;
+}
+
+input[type="number"] {
+	font-family: "Orbitron", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.75rem;
+	text-transform: lowercase;
+}
+
+.toolkit-item p,
+.volume-convert-container p {
+	font-family: "Orbitron", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.6rem;
+	text-align: center;
+	max-width: 75px;
+}
+
+/*easy upsize with help of GPT: can you recommend ratios to change the layout and font of my mobile css into tablet at min-width 500px and laptop at 1000px?*/
+@media screen and (min-width: 500px) {
+
+	.chat-robot p,
+	.chat-robot-reveal p {
+		font-size: 0.65rem;
+	}
+
+	h1 {
+		font-size: 1.25rem;
+	}
+
+	h2 {
+		font-size: 1rem;
+	}
+
+	.web-title {
+		font-size: 1.75rem;
+	}
+
+	nav,
+	button,
+	::placeholder {
+		font-size: 0.85rem;
+	}
+
+	.toolkit-item p,
+	.volume-convert-container p {
+		font-size: 0.7rem;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+
+	.chat-robot p,
+	.chat-robot-reveal p {
+		font-size: 0.75rem;
+	}
+
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	h2 {
+		font-size: 1.2rem;
+	}
+
+	.web-title {
+		font-size: 2rem;
+	}
+
+	nav,
+	button,
+	::placeholder {
+		font-size: 1rem;
+	}
+
+	.toolkit-item p,
+	.volume-convert-container p {
+		font-size: 0.8rem;
+	}
+}
+
+
+/*Homepage*/
+/*make the credit appear when info icon is clicked, GPT prompt:I want to be able to click an img icon "info icon" in the navigation, and then the right side of navigation saying "made by: me" appears with an animation that makes the sentence appear from left to right*/
+.nav-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	padding: 0 1vw 0 1vw;
+	height: 8vh;
+}
+
+.info-icon {
+	cursor: pointer;
+}
+
+.credit-text.hidden {
+	opacity: 0;
+	width: 0;
+	overflow: hidden;
+}
+
+.credit-text {
+	font-size: 0.7rem;
+	white-space: nowrap;
+	transition: all 0.5s ease;
+	opacity: 1;
+	width: 190px;
+}
+
+/*resize for credit text*/
+@media screen and (min-width: 500px) {
+	.credit-text {
+		font-size: 0.8rem;
+		width: 200px
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.credit-text {
+		font-size: 1rem;
+		width: 250px
+	}
+}
+
+/*here is the layout*/
+.home-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.menu-container {
+	display: flex;
+	flex-direction: row;
+	height: 30vh;
+	display: flex;
+	gap: 5vw;
+	justify-content: center;
+	align-items: center;
+	margin: 2vh 0 2vh 0;
+	width: 100vw;
+}
+
+.menu-container a {
+	width: 50vw;
+	height: auto;
+}
+
+/*making the menu align up and down*/
+.menu-recipe {
+	align-self: flex-start;
+}
+
+.menu-toolkit {
+	align-self: flex-end;
+}
+
+/*prepare the menu container to appear after clicking, method from ChatGPT, prompt: how to make a html container to appear when I click on an img, I use class tags*/
+.home-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.menu-container {
+	visibility: visible;
+	pointer-events: auto;
+	transition: opacity 0.5 ease;
+	width: 100vw;
+	max-height: 100vh;
+	gap: 5vw;
+	padding: 0 5vw 0 5vw;
+}
+
+.menu-container.hidden {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+.intro-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
+	gap: 0.5rem;
+}
+
+.intro-container img {
+	max-width: 100%;
+	height: auto;
+}
+
+.web-name {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	text-align: right;
+	flex: 1;
+}
+
+.thought-bubble-container {
+	position: absolute;
+	width: 25vw;
+	max-width: 75px;
+	top: 0px;
+	right: 150px;
+	text-align: center;
+}
+
+.thought-bubble {
+	width: 100%;
+	max-width: 75px;
+	height: auto;
+}
+
+@media screen and (min-width: 500px) {
+	.intro-container {
+		flex-direction: row;
+		flex-direction: row-reverse;
+		align-items: center;
+	}
+
+	.thought-bubble-container {
+		right: 150px;
+	}
+
+	.web-name {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-end;
+		text-align: left;
+	}
+
+	.menu-container {
+		max-width: 500px;
+	}
+}
+
+@media screen and (min-width: 1000px) {
+	.menu-container {
+		max-width: 600px;
+	}
+}
+
+/*AI Recipe Generator PAGE, with help of Claude.ai for aligning items*/
+.ai-recipe-generator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.chat-robot,
+.chat-robot-reveal {
+	width: 100%;
+	padding: 0 5vw 0 5vw;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: flex-start;
+	justify-content: center;
+	margin-top: 5vh;
+}
+
+@media screen and (min-width: 500px) {
+	.chat-robot {
+		flex-direction: row;
+		flex-direction: row-reverse;
+		align-items: center;
+		justify-content: flex-end;
+	}
+
+}
+
+/*chat box for user input, with help of GPT*/
+.chat-log {
+	width: 100%;
+	max-height: 50vh;
+	overflow-y: auto;
+	padding: 1rem;
+	font-size: 0.75rem;
+}
+
+.user-message,
+.bot-message {
+	margin: 0.5rem 0;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.75rem;
+}
+
+.user-message {
+	background-color: #d9d9d9;
+	text-align: right;
+}
+
+.bot-message {
+	font-family: "Orbitron", sans-serif;
+	text-align: left;
+	font-size: 0.7rem;
+	line-height: 1.5;
+}
+
+/*to style the ai recipe and create a copy button, 2 codes from GPT*/
+.bot-message p {
+	margin-bottom: 0.75rem;
+	line-height: 1.5;
+}
+
+.copy-recipe-button {
+	margin-top: 1rem;
+	padding: 0.4rem 1rem;
+	font-family: 'Orbitron', sans-serif;
+	font-size: 0.7rem;
+	cursor: pointer;
+	border: none;
+	border-radius: 5px;
+	background-color: #eee;
+	transition: background-color 0.2s ease;
+}
+
+.copy-recipe-button:hover {
+	background-color: #ccc;
+}
+
+
+.bot-message strong {
+	font-weight: 700;
+	font-size: 0.8rem;
+}
+
+
+.response-box {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+}
+
+.chat-user {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+	margin-bottom: 10px;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+}
+
+/*for chatting functions*/
+.send-btn {
+	cursor: pointer;
+}
+
+/*Mystery Box PAGE*/
+.mystery-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.content-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	flex: 1;
+}
+
+.mystery-box {
+	display: flex;
+	flex-direction: column;
+	margin-top: auto;
+	margin-bottom: 30px;
+	align-items: center;
+	justify-content: center;
+}
+
+/*Your Mystery Recipe PAGE*/
+.reveal-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.recipe-reveal-box p {
+	line-height: 1.2rem;
+	height: auto;
+}
+
+.recipe-reveal-box iframe {
+	margin-top: 20px;
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 16 / 9;
+}
+
+.recipe-buttons {
+	display: flex;
+	flex-direction: row;
+	margin-top: auto;
+	margin-bottom: 20px;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+@media screen and (min-width: 500px) {
+	.chat-robot-reveal {
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 20px;
+	}
+
+}
+
+
+/*Cooking Toolkit PAGE*/
+.toolkit-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.toolkit-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	width: 100%;
+	align-items: center;
+	justify-items: center;
+	margin-top: auto;
+	margin-bottom: 10vh;
+}
+
+.toolkit-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/*make the first item start on 2nd column, with help of Claude.ai*/
+.toolkit-list .toolkit-item:first-child {
+	grid-column: 2;
+	grid-row: 1;
+}
+
+.toolkit-list .toolkit-item:nth-child(2) {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+.toolkit-list .toolkit-item:nth-child(3) {
+	grid-column: 2;
+	grid-row: 2;
+}
+
+@media screen and (min-width: 500px) {
+	.toolkit-list {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 10vw;
+		margin-top: 15vh;
+	}
+}
+
+
+/*Temperature Converter PAGE*/
+.temperature-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.temp-convert-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10vh;
+}
+
+.number-container img {
+	width: 5vw;
+}
+
+.thermometer-icon {
+	width: 10vw;
+}
+
+.number-container {
+	display: flex;
+	margin: auto;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+.convert-item {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	padding: 0 10px 0 10px;
+}
+
+.convert-item input {
+	width: 20vw;
+	max-width: 150px;
+}
+
+
+/*Cooking Timer PAGE*/
+.cooking-timer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.timer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 15vh;
+}
+
+.timer-button {
+	display: flex;
+	flex-direction: row;
+	gap: 10vw;
+	align-items: center;
+	justify-content: center;
+	max-width: 300px;
+}
+
+.timer-button button {
+	padding: 0 0.5rem 0 0.5rem;
+}
+
+.timer-display {
+	background-color: #d9d9d9;
+	padding: 1rem 1.5rem;
+	border-radius: 10px;
+	margin: auto;
+	font-family: 'orbitron', sans-serif;
+	font-size: 2rem;
+	font-weight: 600;
+	letter-spacing: 2px;
+	text-align: center;
+	width: 100%;
+}
+
+.function-buttons {
+	display: flex;
+	flex-direction: row;
+	gap: auto;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	justify-content: space-between;
+	padding: 0 10px 0 10px;
+	max-width: 300px;
+}
+
+.start-and-pause-buttons {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+@media screen and (min-width: 500px) {
+	.timer-button {
+		max-width: 500px;
+	}
+
+	.timer-display {
+		font-size: 3rem;
+	}
+
+	.function-buttons {
+		max-width: 500px;
+	}
+}
+
+/*Voumne Converter PAGE*/
+.volume-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 1;
+}
+
+.volume-convert-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 15vh;
+}
+
+.volume-convert-unit {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	width: 70vw;
+	max-width: 300px;
+	gap: 20px;
+
+}
+
+
+/*make the selected button have a different background color, GPT:can I make the selected units to have darken background
+*/
+.unit-btn.selected {
+	background-color: #333;
+	color: white;
+	border: 1px solid #000;
+	transition: background-color 0.2s ease;
+	border-radius: 5px;
+}
+
+.volume-convert-number {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+}
+
+@media screen and (min-width: 500px) {
+	.volume-convert-number {
+		gap: 1rem;
+	}
+
+}
+
+.volume-convert-input {
+	display: flex;
+	flex-direction: row;
+	gap: 0.5rem;
+	align-items: center;
+	justify-content: center;
+	width: 70vw;
+	max-width: 300px;
+}
+
+.volume-convert-input input {
+	width: 40vw;
+	max-width: 150px;
+}
+
+.volume-convert-input p {
+	width: 100%;
+	height: 100%;
+	background-color: #D9D9D9;
+	height: 15px;
+	border-radius: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/*
+CSS doesn't allow variables to be used in media
+queries just yet, but you can use these values
+to help you out.
+
+	--size-xs: 320px;
+	--size-sm: 480px;
+	--size-md: 768px;
+	--size-lg: 1024px;
+	--size-xl: 1200px;
+*/
+
+/* This uses the same value as --size-xs.
+@media screen and (width >=320px) {
+	.content-container {
+		margin: 0 auto;
+		max-width: 768px;
+	}
+}
+	*/
+
+/* for scrolling area inside of the page
+	.scroll-box {
+		overflow-y: auto;
+		max-height: 60vh;
+	 }
+	 /*
