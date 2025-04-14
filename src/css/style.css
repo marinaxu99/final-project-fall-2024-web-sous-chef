@@ -40,13 +40,16 @@ nav {
 
 /*a No-Scroll, Screen-Fitting Website, got from ChatGPT, prompt: how can I create a website that does not scroll (adapt to phone screen)*/
 
+html,
 body {
 	display: flex;
 	flex-direction: column;
 	max-height: 100vh;
+	height: 100%;
 }
 
 main {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 }
@@ -437,14 +440,25 @@ input[type="number"] {
 	justify-content: center;
 }
 
+.chat-log {
+	margin-top: auto;
+	margin-bottom: 5vh;
+}
+
 .chat-user {
 	display: flex;
 	flex-direction: column;
-	margin-top: auto;
-	margin-bottom: 10px;
 	align-items: center;
 	justify-content: center;
 	gap: 0.5rem;
+}
+
+input[type="text"] {
+	font-family: "Orbitron", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	font-size: 0.75rem;
+	text-transform: lowercase;
 }
 
 /*for chatting functions*/
@@ -473,7 +487,7 @@ input[type="number"] {
 	display: flex;
 	flex-direction: column;
 	margin-top: auto;
-	margin-bottom: 30px;
+	margin-bottom: 15vh;
 	align-items: center;
 	justify-content: center;
 }
