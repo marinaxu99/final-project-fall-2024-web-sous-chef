@@ -43,13 +43,12 @@ nav {
 body {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
+	max-height: 100vh;
 }
 
 main {
 	display: flex;
 	flex-direction: column;
-	min-height: 100vh;
 }
 
 /*typography*/
@@ -104,7 +103,6 @@ input[type="number"] {
 	text-align: center;
 	max-width: 75px;
 }
-
 
 /*easy upsize with help of GPT: can you recommend ratios to change the layout and font of my mobile css into tablet at min-width 500px and laptop at 1000px?*/
 @media screen and (min-width: 500px) {
@@ -591,15 +589,15 @@ input[type="number"] {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin-top: 15vh;
+	margin-top: 10vh;
 }
 
 .number-container img {
-	width: 10vw;
+	width: 5vw;
 }
 
 .thermometer-icon {
-	width: 20vw;
+	width: 10vw;
 }
 
 .number-container {
@@ -641,7 +639,7 @@ input[type="number"] {
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
-	margin-top: 20vh;
+	margin-top: 15vh;
 }
 
 .timer-button {
@@ -659,7 +657,6 @@ input[type="number"] {
 
 .timer-display {
 	background-color: #d9d9d9;
-	background-size: auto;
 	padding: 1rem 1.5rem;
 	border-radius: 10px;
 	margin: auto;
@@ -667,6 +664,8 @@ input[type="number"] {
 	font-size: 2rem;
 	font-weight: 600;
 	letter-spacing: 2px;
+	text-align: center;
+	width: 100%;
 }
 
 .function-buttons {
@@ -689,6 +688,20 @@ input[type="number"] {
 	justify-content: center;
 }
 
+@media screen and (min-width: 500px) {
+	.timer-button {
+		max-width: 500px;
+	}
+
+	.timer-display {
+		font-size: 3rem;
+	}
+
+	.function-buttons {
+		max-width: 500px;
+	}
+}
+
 /*Voumne Converter PAGE*/
 .volume-container {
 	display: flex;
@@ -704,7 +717,7 @@ input[type="number"] {
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
-	margin-top: 20vh;
+	margin-top: 15vh;
 }
 
 .volume-convert-unit {

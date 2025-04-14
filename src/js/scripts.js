@@ -249,6 +249,67 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 });
 
+//for the timer page, GPT: I want the users able to add the times to the timer using the buttons and click start icon; but also they can add the time to the timer when it's running. they can also pause or reset using the icon on the bottom.
+document.addEventListener("DOMContentLoaded", function () {
+	const timerDisplay = document.querySelector(".timer-display p");
+	const add1min = document.querySelector(".timer-button-1");
+	const add5min = document.querySelector(".timer-button-2");
+	const add10min = document.querySelector(".timer-button-3");
+	const startBtn = document.querySelector(".start-and-pause-buttons img[alt='start button']");
+	const pauseBtn = document.querySelector(".start-and-pause-buttons img[alt='pause button']");
+	const resetBtn = document.querySelector(".reset-button img");
+
+	let totalSeconds = 0;
+	let timerInterval = null;
+
+	function updateDisplay() {
+		const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+		const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+		const secs = String(totalSeconds % 60).padStart(2, "0");
+		timerDisplay.textContent = `${hrs}:${mins}:${secs}`;
+	}
+
+	function startTimer() {
+		if (timerInterval !== null) return; // already running
+		timerInterval = setInterval(() => {
+			if (totalSeconds > 0) {
+				totalSeconds--;
+				updateDisplay();
+			} else {
+				clearInterval(timerInterval);
+				timerInterval = null;
+			}
+		}, 1000);
+	}
+
+	function pauseTimer() {
+		clearInterval(timerInterval);
+		timerInterval = null;
+	}
+
+	function resetTimer() {
+		clearInterval(timerInterval);
+		timerInterval = null;
+		totalSeconds = 0;
+		updateDisplay();
+	}
+
+	function addTime(seconds) {
+		totalSeconds += seconds;
+		updateDisplay();
+	}
+
+	add1min.addEventListener("click", () => addTime(60));
+	add5min.addEventListener("click", () => addTime(300));
+	add10min.addEventListener("click", () => addTime(600));
+	startBtn.addEventListener("click", startTimer);
+	pauseBtn.addEventListener("click", pauseTimer);
+	resetBtn.addEventListener("click", resetTimer);
+
+	updateDisplay();
+});
+
+
 //now the volume converter page, GPT: I want the users to choose any two units and input number to get it converted to the other
 document.addEventListener("DOMContentLoaded", function () {
 	const unitButtons = document.querySelectorAll(".unit-btn");
