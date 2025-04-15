@@ -14,13 +14,13 @@ main> :not(nav) {
 
 @media screen and (min-width: 500px) {
 	main> :not(nav) {
-		margin: 8vh 9vw 8vh 9vw;
+		margin: 5vh 9vw 5vh 9vw;
 	}
 }
 
 @media screen and (min-width: 1000px) {
 	main> :not(nav) {
-		margin: 9vh 10vw 9vh 10vw;
+		margin: 6vh 10vw 6vh 10vw;
 	}
 }
 
