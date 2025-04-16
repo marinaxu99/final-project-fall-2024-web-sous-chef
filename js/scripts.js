@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 		try {
 			// Search using viral/trending recipe keywords
-			const query = "easy recipe, viral recipe, TikTok recipe, TikTok food, chinese recipe, korean recipe, 30-minute dinner";
+			const query = "viral, TikTok recipe, chinese recipe, korean recipe, easy meal";
 			const response = await fetch(
 				`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q=${encodeURIComponent(query)}&order=viewCount&key=${API_KEY}`
 			);
