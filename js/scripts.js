@@ -134,96 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 */
 
-//airecipe — using Google Generative AI API, added more functions with the help of GPT
-import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
-
-const API_KEY = "AIzaSyBHpi_Q87VSBgW81H6_96qrNlTmKQYRwWE";
-const genAI = new GoogleGenerativeAI(API_KEY);
-const model = genAI.getGenerativeModel({ model: "models/gemini-1.5-flash" });
-
-document.addEventListener("DOMContentLoaded", function () {
-	const sendBtn = document.querySelector('.send-btn');
-	const input = document.querySelector('.user-input');
-	const chatLog = document.querySelector('.chat-log');
-
-	input?.addEventListener('keypress', function (e) {
-		if (e.key === 'Enter') sendBtn?.click();
-	});
-
-	if (sendBtn && input && chatLog) {
-		sendBtn.addEventListener('click', async () => {
-			const userText = input.value.trim();
-			if (!userText) return;
-
-			const userMsg = document.createElement("div");
-			userMsg.classList.add("user-message");
-			userMsg.textContent = userText;
-			chatLog.appendChild(userMsg);
-
-			input.value = "";
-
-			const botMsg = document.createElement("div");
-			botMsg.classList.add("bot-message", "loading");
-			botMsg.innerHTML = `<em>🤖 Getting recipe</em>`;
-			chatLog.appendChild(botMsg);
-			botMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-			// Animated dots
-			let dotCount = 0;
-			const loadingInterval = setInterval(() => {
-				dotCount = (dotCount + 1) % 4;
-				botMsg.innerHTML = `<em>🤖 Getting recipe${'.'.repeat(dotCount)}</em>`;
-			}, 500);
-
-			try {
-				const prompt = `Generate a simple, fun recipe using only these ingredients: ${userText}. Return it in a clear format with:
-1. A creative title
-2. Type of dish
-3. Step-by-step instructions
-Format the instructions in bullet points. Make it easy to copy.`;
-
-				const result = await model.generateContent(prompt);
-				const response = await result.response.text();
-
-				clearInterval(loadingInterval);
-
-				botMsg.innerHTML = `
-					<div class="recipe-text">${response.replace(/\n/g, "<br>")}</div>
-					<button class="copy-recipe-button">Copy Recipe</button>
-				`;
-
-				const copyButton = botMsg.querySelector('.copy-recipe-button');
-				const recipeText = botMsg.querySelector('.recipe-text');
-
-				copyButton.addEventListener('click', () => {
-					const textToCopy = recipeText.innerText;
-					navigator.clipboard.writeText(textToCopy)
-						.then(() => {
-							copyButton.textContent = '✓ Copied!';
-							setTimeout(() => {
-								copyButton.textContent = 'Copy Recipe';
-							}, 2000);
-						})
-						.catch(err => {
-							console.error('Copy failed:', err);
-							copyButton.textContent = '✗ Copy Failed';
-						});
-				});
-
-				setTimeout(() => {
-					botMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				}, 50);
-			} catch (err) {
-				clearInterval(loadingInterval);
-				console.error(err);
-				botMsg.innerHTML = `<em>Something went wrong. Please try again.</em>`;
-			}
-		});
-	}
-});
-
-
-
 //your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
 document.addEventListener("DOMContentLoaded", async () => {
 	const outputBox = document.querySelector(".recipe-reveal-box");
@@ -400,7 +310,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	updateDisplay();
 });
-
 
 //now the volume converter page, GPT: I want the users to choose any two units and input number to get it converted to the other
 document.addEventListener("DOMContentLoaded", function () {
