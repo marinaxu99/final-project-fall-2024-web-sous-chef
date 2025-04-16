@@ -42,6 +42,37 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 });
 
+
+//make the mystery box shake and redirect after shaking, from GPT
+document.addEventListener("DOMContentLoaded", () => {
+	const box = document.querySelector(".mystery-box-shake");
+
+	if (box) {
+		box.addEventListener("click", () => {
+			box.classList.add("shake");
+			box.style.pointerEvents = "none";
+
+			// Hide everything in <main> except the box
+			const main = document.querySelector("main");
+			const allElements = main.querySelectorAll("*");
+
+			allElements.forEach(el => {
+				// Don't hide the box itself
+				if (el !== box && !el.contains(box)) {
+					el.classList.add("hidden-on-click");
+				}
+			});
+
+			setTimeout(() => {
+				window.location.href = "reveal.html?generate=true";
+			}, 1900);
+		});
+	}
+});
+
+
+
+
 //your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
 document.addEventListener("DOMContentLoaded", async () => {
 	const outputBox = document.querySelector(".recipe-reveal-box");

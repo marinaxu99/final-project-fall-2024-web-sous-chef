@@ -114,7 +114,7 @@ button,
 	font-family: "Orbitron", sans-serif;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	text-transform: lowercase;
 }
 
@@ -619,6 +619,66 @@ input[type="text"] {
 	align-items: center;
 	justify-content: center;
 }
+
+/*to clear the page after clicking the box*/
+.hidden-on-click {
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.4s ease;
+}
+
+/*to animate the box shaking, GPT: how to make an image shake when clicked*/
+@keyframes shake {
+	0% {
+		transform: rotate(0deg) scale(1);
+	}
+
+	10% {
+		transform: rotate(-4deg) scale(1.02);
+	}
+
+	20% {
+		transform: rotate(4deg) scale(1.04);
+	}
+
+	30% {
+		transform: rotate(-6deg) scale(1.06);
+	}
+
+	40% {
+		transform: rotate(6deg) scale(1.04);
+	}
+
+	50% {
+		transform: rotate(-8deg) scale(1.08);
+		transform: scale(1.2);
+	}
+
+	60% {
+		transform: rotate(8deg) scale(1.05);
+	}
+
+	70% {
+		transform: rotate(-4deg) scale(1.02);
+	}
+
+	80% {
+		transform: rotate(4deg) scale(1.01);
+	}
+
+	90% {
+		transform: rotate(-2deg) scale(1.00);
+	}
+
+	100% {
+		transform: rotate(0deg) scale(5);
+	}
+}
+
+.shake {
+	animation: shake 2s ease-in-out;
+}
+
 
 /*Your Mystery Recipe PAGE*/
 .reveal-container {
