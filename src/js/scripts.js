@@ -321,10 +321,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	if (unitButtons.length < 4 || inputs.length !== 2 || !leftLabel || !rightLabel || !convertBtn) return;
 
 	const conversionToML = {
-		ml: 1,
-		cups: 240,
-		tablespoon: 15,
-		teaspoon: 5
+		milliliters: 1,
+		cups: 236.588,
+		tablespoons: 14.7868,
+		teaspoons: 4.92892
 	};
 
 	let selectedUnits = []; // Store selected units (max 2)
