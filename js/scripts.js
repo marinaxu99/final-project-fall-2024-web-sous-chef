@@ -135,6 +135,9 @@ document.addEventListener("DOMContentLoaded", function () {
 */
 
 //airecipe — using Meta API, got from class
+//import
+import { GoogleGenerativeAI } from "https://esm.run/@google/generative-ai";
+
 const API_KEY = "AIzaSyBHpi_Q87VSBgW81H6_96qrNlTmKQYRwWE"; // 🔒 Replace with your actual key
 
 const genAI = new GoogleGenerativeAI(API_KEY);
@@ -170,10 +173,6 @@ sendButton?.addEventListener("click", generateRecipe);
 inputBox?.addEventListener("keypress", (e) => {
 	if (e.key === "Enter") generateRecipe();
 });
-
-
-// ? is same as checking if generateButton is null
-generateButton?.addEventListener("click", generateStory);
 
 //your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
 document.addEventListener("DOMContentLoaded", async () => {

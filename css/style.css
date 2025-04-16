@@ -1,6 +1,13 @@
 /*links*/
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron:wght@500&family=Press+Start+2P&display=swap');
 
+import {
+	GoogleGenerativeAI
+}
+
+from "https://esm.run/@google/generative-ai";
+
+
 /*layout*/
 * {
 	margin: 0;
@@ -438,7 +445,7 @@ input[type="number"] {
 /*background bubble for the chat robot*/
 .chat-robot p {
 	background-color: #d9d9d9;
-	padding: 0.5rem;
+	padding: 0.5rem 1rem;
 	border-radius: 0.5rem;
 }
 
