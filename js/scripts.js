@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 });
 
+/*
 // aiRecipePage — Now using Spoonacular API (requires API key), beginning GPT prompt: prompt: how can I make a chatbox on my website, where the user can input the ingredients they have, and the "robot" will respond with a ai generated recipe? With free API.
 document.addEventListener("DOMContentLoaded", function () {
 	const sendBtn = document.querySelector('.send-btn');
@@ -131,6 +132,48 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 });
+*/
+
+//airecipe — using Meta API, got from class
+const API_KEY = "AIzaSyBHpi_Q87VSBgW81H6_96qrNlTmKQYRwWE"; // 🔒 Replace with your actual key
+
+const genAI = new GoogleGenerativeAI(API_KEY);
+const model = genAI.getGenerativeModel({ model: "models/gemini-1.5-flash" });
+
+const inputBox = document.querySelector(".user-input");
+const sendButton = document.querySelector(".send-btn");
+const chatLog = document.querySelector(".chat-log");
+
+async function generateRecipe() {
+	const userIngredients = inputBox.value.trim();
+	if (!userIngredients) return;
+
+	const prompt = `Generate a simple and fun recipe using the following ingredients: ${userIngredients}. Make it friendly and easy to follow.`;
+
+	try {
+		const result = await model.generateContent(prompt);
+		const response = await result.response.text();
+
+		chatLog.innerHTML += `
+      <div class="user-message"><strong>You:</strong> ${userIngredients}</div>
+      <div class="bot-message"><strong>Chef Bot:</strong> ${response}</div>
+    `;
+		inputBox.value = "";
+		chatLog.scrollTop = chatLog.scrollHeight;
+	} catch (error) {
+		console.error("Error generating recipe:", error);
+		chatLog.innerHTML += `<div class="bot-message error">Oops! Something went wrong.</div>`;
+	}
+}
+
+sendButton?.addEventListener("click", generateRecipe);
+inputBox?.addEventListener("keypress", (e) => {
+	if (e.key === "Enter") generateRecipe();
+});
+
+
+// ? is same as checking if generateButton is null
+generateButton?.addEventListener("click", generateStory);
 
 //your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
 document.addEventListener("DOMContentLoaded", async () => {

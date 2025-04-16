@@ -435,6 +435,13 @@ input[type="number"] {
 	margin-top: 5vh;
 }
 
+/*background bubble for the chat robot*/
+.chat-robot p {
+	background-color: #d9d9d9;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+}
+
 @media screen and (min-width: 500px) {
 	.chat-robot {
 		flex-direction: row;
