@@ -19,14 +19,13 @@ if (infoIcon) {
 
 
 //for thought bubble changing on the homepage, gotten from GPT, prompt: how to make an img change into another after 1 second of delay
-document.addEventListener("DOMContentLoaded", function () {
-	const bubbleApear = document.querySelector('.thought-bubble');
-	if (bubbleApear) {
-		setTimeout(() => {
-			bubbleApear.src = 'images/thought-bubble-2.svg';
-		}, 2000);
-	}
-});
+const bubbleApear = document.querySelector('.thought-bubble');
+
+if (bubbleApear) {
+	setTimeout(() => {
+		bubbleApear.src = 'images/thought-bubble-2.svg';
+	}, 2000);
+}
 
 //make the menu container appear when the robot or the thought bubble is clicked, help from GPT
 document.addEventListener("DOMContentLoaded", function () {
