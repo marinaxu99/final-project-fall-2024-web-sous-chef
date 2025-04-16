@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			const botMsg = document.createElement("div");
 			botMsg.classList.add("bot-message", "loading");
-			botMsg.innerHTML = `<em>🤖 Getting recipe</em>`;
+			botMsg.innerHTML = `<em>thinking</em>`;
 			chatLog.appendChild(botMsg);
 			botMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			let dotCount = 0;
 			const loadingInterval = setInterval(() => {
 				dotCount = (dotCount + 1) % 4;
-				botMsg.innerHTML = `<em>🤖 Getting recipe${'.'.repeat(dotCount)}</em>`;
+				botMsg.innerHTML = `<em>thinking${'.'.repeat(dotCount)}</em>`;
 			}, 500);
 
 			try {
@@ -52,11 +52,16 @@ Format the instructions in bullet points. Make it easy to copy.`;
 				const response = await result.response.text();
 
 				clearInterval(loadingInterval);
+				botMsg.classList.remove("loading");
+
+				const htmlResponse = response
+					.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
+					.replace(/\n/g, "<br>"); // line breaks
 
 				botMsg.innerHTML = `
-					<div class="recipe-text">${response.replace(/\n/g, "<br>")}</div>
+					<div class="recipe-text">${htmlResponse}</div>
 					<button class="copy-recipe-button">Copy Recipe</button>
-				`;
+				 `;
 
 				const copyButton = botMsg.querySelector('.copy-recipe-button');
 				const recipeText = botMsg.querySelector('.recipe-text');
