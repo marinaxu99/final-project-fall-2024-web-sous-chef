@@ -68,6 +68,19 @@ input[type="number"]::-webkit-inner-spin-button {
 	margin: 0;
 }
 
+button {
+	padding: 0.2rem 1rem;
+	border: 1px solid #333;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #e9e9e9;
+}
+
+button:hover {
+	background-color: #3b3b3b;
+	color: #ffffff;
+}
+
 /*typography*/
 .chat-robot p,
 .chat-robot-reveal p {
@@ -95,6 +108,8 @@ h2 {
 
 nav,
 button,
+.hidden-link,
+.generate-mystery-recipe-button,
 ::placeholder {
 	font-family: "Orbitron", sans-serif;
 	font-weight: 400;
@@ -143,6 +158,8 @@ input[type="number"] {
 
 	nav,
 	button,
+	.hidden-link,
+	.generate-mystery-recipe-button,
 	::placeholder {
 		font-size: 0.85rem;
 	}
@@ -174,6 +191,8 @@ input[type="number"] {
 
 	nav,
 	button,
+	.hidden-link,
+	.generate-mystery-recipe-button,
 	::placeholder {
 		font-size: 1rem;
 	}
@@ -484,6 +503,29 @@ input[type="number"] {
 	line-height: 1.5;
 }
 
+.generate-mystery-recipe-button {
+	cursor: pointer;
+	padding: 0.2rem 1rem;
+	border-radius: 5px;
+	text-align: center;
+	text-transform: lowercase;
+	text-decoration: none;
+	display: inline-block;
+	background-color: #E9E9E9;
+	color: #000;
+	border: 1px solid #000;
+}
+
+.generate-mystery-recipe-button:hover {
+	border: 1px solid #3b3b3b;
+	background-color: #3b3b3b;
+	color: #FFFFFF;
+}
+
+.generate-mystery-recipe-button:active {
+	transform: scale(0.95);
+}
+
 /*to style the ai recipe and create a copy button, 2 codes from GPT*/
 .bot-message p {
 	margin-bottom: 0.75rem;
@@ -503,7 +545,16 @@ input[type="number"] {
 }
 
 .copy-recipe-button:hover {
-	background-color: #ccc;
+	background-color: #E9E9E9;
+}
+
+.copy-recipe-button:active {
+	transform: scale(0.95);
+}
+
+.hidden-link {
+	display: none;
+	border: #000;
 }
 
 .bot-message strong {
@@ -608,6 +659,30 @@ input[type="text"] {
 		gap: 20px;
 	}
 
+}
+
+/*reveal page "go to source" button*/
+.hidden-link {
+	cursor: pointer;
+	padding: 0.2rem 1rem;
+	border-radius: 5px;
+	background-color: #E9E9E9;
+	color: #000;
+	border: 1px solid #000;
+	text-align: center;
+	text-transform: lowercase;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.hidden-link:hover {
+	background-color: #3b3b3b;
+	border: 1px solid #3b3b3b;
+	color: #FFFFFF;
+}
+
+.hidden-link:active {
+	transform: scale(0.95);
 }
 
 /*Cooking Toolkit PAGE*/
@@ -939,7 +1014,7 @@ input[type="text"] {
 	max-width: 150px;
 	height: 1.5rem;
 	padding: 0 0.25rem;
-	border: 1px solid #ccc;
+	border: 1px solid #E9E9E9;
 	border-radius: 0.25rem;
 }
 
