@@ -484,6 +484,30 @@ input[type="number"] {
 	line-height: 1.5;
 }
 
+.generate-mystery-recipe-button {
+	cursor: pointer;
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.75rem;
+	color: #FFFFFF;
+	padding: 0.2rem 1rem;
+	border: none;
+	border-radius: 5px;
+	background-color: #3b3b3b;
+	text-align: center;
+	text-transform: lowercase;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.generate-mystery-recipe-button:hover {
+	background-color: #ccc;
+	color: #000
+}
+
+.generate-mystery-recipe-button:active {
+	transform: scale(0.95);
+}
+
 /*to style the ai recipe and create a copy button, 2 codes from GPT*/
 .bot-message p {
 	margin-bottom: 0.75rem;
@@ -504,6 +528,15 @@ input[type="number"] {
 
 .copy-recipe-button:hover {
 	background-color: #ccc;
+}
+
+.copy-recipe-button:active {
+	transform: scale(0.95);
+}
+
+.hidden-link {
+	display: none;
+	border: #000;
 }
 
 .bot-message strong {
@@ -608,6 +641,31 @@ input[type="text"] {
 		gap: 20px;
 	}
 
+}
+
+/*reveal page "go to source" button*/
+.hidden-link {
+	cursor: pointer;
+	font-family: "Orbitron", sans-serif;
+	font-size: 0.75rem;
+	color: #FFFFFF;
+	padding: 0.2rem 1rem;
+	border: none;
+	border-radius: 5px;
+	background-color: #3b3b3b;
+	text-align: center;
+	text-transform: lowercase;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.hidden-link:hover {
+	background-color: #ccc;
+	color: #000
+}
+
+.hidden-link:active {
+	transform: scale(0.95);
 }
 
 /*Cooking Toolkit PAGE*/
