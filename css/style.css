@@ -14,13 +14,13 @@ main> :not(nav) {
 
 @media screen and (min-width: 500px) {
 	main> :not(nav) {
-		margin: 8vh 9vw 8vh 9vw;
+		margin: 5vh 9vw 5vh 9vw;
 	}
 }
 
 @media screen and (min-width: 1000px) {
 	main> :not(nav) {
-		margin: 9vh 10vw 9vh 10vw;
+		margin: 6vh 10vw 6vh 10vw;
 	}
 }
 
@@ -55,6 +55,19 @@ main {
 	height: 100%;
 }
 
+/*no up and down arrows in the number input field, from GPT*/
+input[type="number"] {
+	appearance: none;
+	-moz-appearance: textfield;
+	-webkit-appearance: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 /*typography*/
 .chat-robot p,
 .chat-robot-reveal p {
@@ -86,7 +99,7 @@ button,
 	font-family: "Orbitron", sans-serif;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 0.75rem;
+	font-size: 1rem;
 	text-transform: lowercase;
 }
 
@@ -94,7 +107,7 @@ input[type="number"] {
 	font-family: "Orbitron", sans-serif;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 0.75rem;
+	font-size: 1rem;
 	text-transform: lowercase;
 }
 
@@ -103,7 +116,7 @@ input[type="number"] {
 	font-family: "Orbitron", sans-serif;
 	font-weight: 400;
 	font-style: normal;
-	font-size: 0.6rem;
+	font-size: 0.75rem;
 	text-align: center;
 	max-width: 75px;
 }
@@ -249,6 +262,43 @@ input[type="number"] {
 	align-self: flex-end;
 }
 
+/*menu hover effect, got from GPT: hover zoom in effect*/
+.menu-recipe,
+.menu-toolkit {
+	transition: transform 0.2s ease;
+}
+
+.menu-recipe:hover {
+	transform: scale(1.1);
+}
+
+.menu-toolkit:hover {
+	transform: scale(1.1);
+}
+
+/*menu click effect, GPT: click flicker effect*/
+@keyframes flicker {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.6;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.menu-recipe:active {
+	animation: flicker 0.15s ease;
+}
+
+.menu-toolkit:active {
+	animation: flicker 0.15s ease;
+}
+
 /*prepare the menu container to appear after clicking, method from ChatGPT, prompt: how to make a html container to appear when I click on an img, I use class tags*/
 .home-container {
 	display: flex;
@@ -303,6 +353,24 @@ input[type="number"] {
 	right: 150px;
 	text-align: center;
 }
+
+/*robot jump on hover, GPT: recommend some hover effects for my robot to show the menu*/
+.robot-click {
+	transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.intro-container:hover .robot-click {
+	transform: translateY(-8px);
+	filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.25));
+	cursor: pointer;
+}
+
+/*a click feedback on the robot, from GPT too*/
+.intro-container:active .robot-click {
+	transform: translateY(-3px) scale(0.97);
+	filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.2));
+}
+
 
 .thought-bubble {
 	width: 100%;
@@ -429,12 +497,10 @@ input[type="number"] {
 	background-color: #ccc;
 }
 
-
 .bot-message strong {
 	font-weight: 700;
 	font-size: 0.8rem;
 }
-
 
 .response-box {
 	display: flex;
@@ -535,7 +601,6 @@ input[type="text"] {
 
 }
 
-
 /*Cooking Toolkit PAGE*/
 .toolkit-container {
 	display: flex;
@@ -561,6 +626,12 @@ input[type="text"] {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	width: clamp(100px, 100%, 250px);
+}
+
+.toolkit-item p {
+	width: 100%;
+	max-width: 200px;
 }
 
 /*make the first item start on 2nd column, with help of Claude.ai*/
@@ -577,6 +648,19 @@ input[type="text"] {
 .toolkit-list .toolkit-item:nth-child(3) {
 	grid-column: 2;
 	grid-row: 2;
+}
+
+/*toolkit items hover and click feedback*/
+.toolkit-item img {
+	transition: transform 0.2s ease;
+}
+
+.toolkit-item img:hover {
+	transform: scale(1.1);
+}
+
+.toolkit-item img:active {
+	animation: flicker 0.15s ease;
 }
 
 @media screen and (min-width: 500px) {
@@ -609,11 +693,11 @@ input[type="text"] {
 }
 
 .number-container img {
-	width: 5vw;
+	width: clamp(25px, 10vw, 50px);
 }
 
 .thermometer-icon {
-	width: 10vw;
+	width: clamp(45px, 20vw, 100px);
 }
 
 .number-container {
@@ -635,10 +719,23 @@ input[type="text"] {
 }
 
 .convert-item input {
-	width: 20vw;
+	width: 35vw;
 	max-width: 150px;
 }
 
+/*convert hover effect*/
+.convert-click {
+	transition: transform 0.2s ease;
+}
+
+.convert-click:hover {
+	transform: scale(1.1);
+}
+
+/*convert click effect*/
+.convert-click:active {
+	transform: scale(0.95);
+}
 
 /*Cooking Timer PAGE*/
 .cooking-timer-container {
@@ -668,7 +765,25 @@ input[type="text"] {
 }
 
 .timer-button button {
-	padding: 0 0.5rem 0 0.5rem;
+	padding: 0.2rem 1rem 0.2rem 1rem;
+	background-color: #e5e5e5;
+	border: 2px solid #333;
+	border-radius: 8px;
+	width: clamp(50px, 20vw, 75px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 1rem;
+	line-height: 1.2;
+}
+
+/*to prevent button from showing weird width when stretching*/
+@media screen and (min-width: 500px) {
+	.timer-button button {
+		padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+	}
+
 }
 
 .timer-display {
@@ -680,8 +795,8 @@ input[type="text"] {
 	font-size: 2rem;
 	font-weight: 600;
 	letter-spacing: 2px;
+	width: clamp(250px, 90vw, 350px);
 	text-align: center;
-	width: 100%;
 }
 
 .function-buttons {
@@ -702,6 +817,38 @@ input[type="text"] {
 	gap: 0.5rem;
 	align-items: center;
 	justify-content: center;
+}
+
+/*timer button hover and click effect*/
+.timer-button button {
+	transition: transform 0.2s ease;
+}
+
+.timer-button button:hover {
+	transform: scale(1.1);
+}
+
+.timer-button button:active {
+	transform: scale(0.95);
+}
+
+/*different button hover effects by GPT*/
+.start-and-pause-buttons img {
+	transition: transform 0.2s ease;
+}
+
+.start-and-pause-buttons img:hover {
+	transform: scale(1.1);
+}
+
+.reset-button:hover {
+	transform: rotate(180deg);
+	transition: transform 0.3s ease;
+}
+
+/*function button click effects*/
+.function-buttons img:active {
+	transform: scale(0.95);
 }
 
 @media screen and (min-width: 500px) {
@@ -742,9 +889,7 @@ input[type="text"] {
 	width: 70vw;
 	max-width: 300px;
 	gap: 20px;
-
 }
-
 
 /*make the selected button have a different background color, GPT:can I make the selected units to have darken background
 */
@@ -768,33 +913,52 @@ input[type="text"] {
 	.volume-convert-number {
 		gap: 1rem;
 	}
-
 }
 
 .volume-convert-input {
 	display: flex;
 	flex-direction: row;
-	gap: 0.5rem;
+	gap: 1rem;
 	align-items: center;
 	justify-content: center;
-	width: 70vw;
+	width: 90vw;
 	max-width: 300px;
+	margin: 0.5rem 0;
 }
 
 .volume-convert-input input {
 	width: 40vw;
 	max-width: 150px;
+	height: 1.5rem;
+	padding: 0 0.25rem;
+	border: 1px solid #ccc;
+	border-radius: 0.25rem;
 }
 
 .volume-convert-input p {
-	width: 100%;
-	height: 100%;
-	background-color: #D9D9D9;
-	height: 15px;
+	background-color: #d9d9d9;
+	width: 40vw;
+	max-width: 120px;
+	height: 1.5rem;
 	border-radius: 0.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+/*convert button hover effect*/
+.convert-volume-btn {
+	width: clamp(30px, 15vw, 50px);
+	transition: transform 0.2s ease;
+}
+
+.convert-volume-btn:hover {
+	transform: scale(1.1);
+}
+
+/*convert click effect*/
+.convert-volume-btn:active {
+	transform: scale(0.95);
 }
 
 /*
