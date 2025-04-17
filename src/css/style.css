@@ -24,7 +24,11 @@ main> :not(nav) {
 	}
 }
 
-img,
+img {
+	max-width: 100%;
+	display: block;
+}
+
 iframe {
 	width: 90vw;
 	height: auto;
