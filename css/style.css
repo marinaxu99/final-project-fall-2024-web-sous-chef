@@ -26,8 +26,10 @@ main> :not(nav) {
 
 img,
 iframe {
-	max-width: 100%;
+	width: 90vw;
+	height: auto;
 	display: block;
+	margin-bottom: 1rem;
 }
 
 nav {
