@@ -547,12 +547,14 @@ input[type="number"] {
 	cursor: pointer;
 	border: none;
 	border-radius: 5px;
-	background-color: #eee;
+	background-color: #ffffff;
+	color: #000;
 	transition: background-color 0.2s ease;
 }
 
 .copy-recipe-button:hover {
-	background-color: #E9E9E9;
+	background-color: #3b3b3b;
+	color: #FFFFFF;
 }
 
 .copy-recipe-button:active {
@@ -590,6 +592,7 @@ input[type="number"] {
 .user-input {
 	border: 1px solid #000;
 	border-radius: 5px;
+	padding: 0.2rem 0.5rem;
 }
 
 input[type="text"] {
