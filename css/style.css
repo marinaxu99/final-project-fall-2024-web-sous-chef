@@ -879,8 +879,7 @@ input[type="text"] {
 .convert-item input {
 	width: 35vw;
 	max-width: 150px;
-	height: 30px;
-	border: 1px solid #000;
+	height: 2rem;
 	border-radius: 5px;
 	padding: 0rem 0.3rem;
 }
@@ -1096,9 +1095,8 @@ input[type="text"] {
 .volume-convert-input input {
 	width: 40vw;
 	max-width: 150px;
-	height: 1.5rem;
+	height: 2rem;
 	padding: 0 0.25rem;
-	border: 1px solid #E9E9E9;
 	border-radius: 0.25rem;
 }
 
