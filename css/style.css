@@ -493,7 +493,7 @@ input[type="number"] {
 .user-message,
 .bot-message {
 	margin: 0.5rem 0;
-	padding: 0.5rem 2rem;
+	padding: 0.5rem 1rem;
 	font-family: "Orbitron", sans-serif;
 	font-size: 0.75rem;
 	border-radius: 1rem;
@@ -523,14 +523,31 @@ input[type="number"] {
 	text-align: center;
 	text-transform: lowercase;
 	text-decoration: none;
-	display: inline-block;
-	background-color: #E9E9E9;
 	color: #000;
-	border: 1px solid #000;
+
+	background-color: #e0e0e0;
+	border: 2px solid #000;
+	box-shadow: 2px 2px 0px #000;
+	letter-spacing: 2px;
+	/*to make the mystery button more fun*/
+	animation: pulse 1.5s infinite ease-in-out;
 }
 
+@keyframes pulse {
+
+	0%,
+	100% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.05);
+	}
+}
+
+
 .generate-mystery-recipe-button:hover {
-	border: 1px solid #3b3b3b;
+	border: 2px solid #3b3b3b;
 	background-color: #3b3b3b;
 	color: #FFFFFF;
 }
@@ -596,9 +613,13 @@ input[type="number"] {
 }
 
 .user-input {
-	border: 1px solid #000;
-	border-radius: 5px;
 	padding: 0.2rem 0.5rem;
+	background-color: #ffffff;
+	box-shadow: 2px 2px 0px #888;
+	border: 2px solid #000;
+	font-size: 16px;
+	border-radius: 4px;
+	outline: none;
 }
 
 input[type="text"] {
@@ -612,6 +633,9 @@ input[type="text"] {
 /*for chatting functions*/
 .send-btn {
 	cursor: pointer;
+	background: #e0e0e0;
+	border: 2px solid #000;
+	box-shadow: 2px 2px 0px #000;
 }
 
 /*Mystery Box PAGE*/
