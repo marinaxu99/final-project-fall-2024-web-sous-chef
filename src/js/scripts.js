@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 		try {
 			// Search using viral/trending recipe keywords
-			const query = "trending recipe OR TikTok recipe OR viral recipe OR easy recipes OR 5-minute meals OR korean recipe OR chinese recipe";
+			const query = "trending recipe OR popular recipe OR easy recipes OR quick meals OR korean recipe OR chinese recipe";
 			const response = await fetch(
 				`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q=${encodeURIComponent(query)}&order=viewCount&key=${API_KEY}`
 			);
@@ -108,11 +108,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 				<p>Here is a popular one!</p>
 					<p><strong>🍽️ ${title}</strong></p>
 					<p><em>by ${channel}</em></p>
+					<div class="iframe-wrapper">
 					<iframe width="100%" height="215" src="https://www.youtube.com/embed/${videoId}"
 						title="YouTube video player" frameborder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen>
-					</iframe>
+					</iframe></div>
 				`;
 
 				sourceBtn.href = videoUrl;
