@@ -30,12 +30,11 @@ img {
 }
 
 iframe {
-	width: 90vw;
-	height: auto;
-	display: block;
-	aspect-ratio: 16 / 9;
-	margin-bottom: 1rem;
+	width: 100%;
 	max-width: 600px;
+	height: auto;
+	max-height: 50vh;
+	display: block;
 	margin: 1rem auto;
 	border: none;
 }
