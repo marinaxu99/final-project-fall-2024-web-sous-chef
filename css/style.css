@@ -29,14 +29,18 @@ img {
 	display: block;
 }
 
-iframe {
-	width: 100%;
+.iframe-wrapper {
+	width: 60vw;
 	max-width: 600px;
+	margin: 0 auto;
+}
+
+.iframe-wrapper iframe {
+	width: 100%;
 	height: auto;
-	max-height: 50vh;
-	display: block;
-	margin: 1rem auto;
+	aspect-ratio: auto;
 	border: none;
+	display: block;
 }
 
 nav {

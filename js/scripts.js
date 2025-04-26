@@ -108,11 +108,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 				<p>Here is a popular one!</p>
 					<p><strong>🍽️ ${title}</strong></p>
 					<p><em>by ${channel}</em></p>
+					<div class="iframe-wrapper">
 					<iframe width="100%" height="215" src="https://www.youtube.com/embed/${videoId}"
 						title="YouTube video player" frameborder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen>
-					</iframe>
+					</iframe></div>
 				`;
 
 				sourceBtn.href = videoUrl;
