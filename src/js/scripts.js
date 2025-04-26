@@ -42,35 +42,39 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-//make the mystery box shake and redirect after shaking, from GPT
+// Updated: make the mystery box shake, play sound fully, then redirect
 document.addEventListener("DOMContentLoaded", () => {
 	const box = document.querySelector(".mystery-box-shake");
+	const magicSound = document.querySelector(".magic-sound");
 
-	if (box) {
+	if (box && magicSound) {
 		box.addEventListener("click", () => {
 			box.classList.add("shake");
 			box.style.pointerEvents = "none";
 
-			// Hide everything in <main> except the box
+			// Hide everything except box
 			const main = document.querySelector("main");
 			const allElements = main.querySelectorAll("*");
 
 			allElements.forEach(el => {
-				// Don't hide the box itself
 				if (el !== box && !el.contains(box)) {
 					el.classList.add("hidden-on-click");
 				}
 			});
 
+			// Play magic sound
+			magicSound.currentTime = 0;
+			magicSound.play().catch(err => {
+				console.warn("Sound blocked or error:", err);
+			});
+
+			// ✨ Redirect after 2.3 seconds (NOT waiting for sound end)
 			setTimeout(() => {
 				window.location.href = "reveal.html?generate=true";
-			}, 1900);
+			}, 2300);
 		});
 	}
 });
-
-
-
 
 //your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
 document.addEventListener("DOMContentLoaded", async () => {
@@ -199,8 +203,26 @@ document.addEventListener("DOMContentLoaded", function () {
 	const pauseBtn = document.querySelector(".start-and-pause-buttons img[alt='pause button']");
 	const resetBtn = document.querySelector(".reset-button img");
 
+	const timerSound = document.querySelector('.timer-sound');
+	const popup = document.querySelector('.time-up-popup');
+	const overtimeCount = document.querySelector('.overtime-count');
+	const doneBtn = document.querySelector('.popup-done-btn');
+
+	// Check that important elements exist
+	if (!timerDisplay || !add1min || !add5min || !add10min || !startBtn || !pauseBtn || !resetBtn) {
+		console.error("Timer setup error: Missing essential elements.");
+		return;
+	}
+	if (!timerSound || !popup || !overtimeCount || !doneBtn) {
+		console.error("Popup or sound elements missing.");
+		return;
+	}
 	let totalSeconds = 0;
 	let timerInterval = null;
+	let beepCount = 0;
+	const maxBeeps = 3;
+	let overtimeSeconds = 0;
+	let overtimeInterval = null;
 
 	function updateDisplay() {
 		const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
@@ -218,6 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			} else {
 				clearInterval(timerInterval);
 				timerInterval = null;
+				handleTimerEnd(); // Timer finished
 			}
 		}, 1000);
 	}
@@ -232,6 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		timerInterval = null;
 		totalSeconds = 0;
 		updateDisplay();
+		hideTimeUpPopup();
 	}
 
 	function addTime(seconds) {
@@ -239,15 +263,70 @@ document.addEventListener("DOMContentLoaded", function () {
 		updateDisplay();
 	}
 
+	// =========== TIME'S UP EFFECTS ===========
+
+	function handleTimerEnd() {
+		playBeep();
+		showTimeUpPopup();
+	}
+
+	function playBeep() {
+		try {
+			timerSound.currentTime = 0;
+			timerSound.play().catch((err) => {
+				console.warn("Sound play blocked or failed:", err);
+			});
+		} catch (error) {
+			console.warn("Sound play error:", error);
+		}
+	}
+
+
+	function showTimeUpPopup() {
+		popup.classList.remove('hidden-popup');
+		popup.classList.add('show');
+
+		// Vibrate
+		if (navigator.vibrate) {
+			navigator.vibrate([500, 200, 500]);
+		}
+
+		// Start overtime counter
+		overtimeSeconds = 0;
+		overtimeCount.textContent = "0 sec";
+
+		overtimeInterval = setInterval(() => {
+			overtimeSeconds++;
+			const mins = Math.floor(overtimeSeconds / 60);
+			const secs = overtimeSeconds % 60;
+
+			if (mins === 0) {
+				overtimeCount.textContent = `${secs} sec`;
+			} else {
+				overtimeCount.textContent = `${mins} min ${secs} sec`;
+			}
+		}, 1000);
+	}
+
+	function hideTimeUpPopup() {
+		popup.classList.remove('show');
+		popup.classList.add('hidden-popup');
+		clearInterval(overtimeInterval);
+	}
+
+	// =========== EVENTS ===========
+
 	add1min.addEventListener("click", () => addTime(60));
 	add5min.addEventListener("click", () => addTime(300));
 	add10min.addEventListener("click", () => addTime(600));
 	startBtn.addEventListener("click", startTimer);
 	pauseBtn.addEventListener("click", pauseTimer);
 	resetBtn.addEventListener("click", resetTimer);
+	doneBtn.addEventListener("click", hideTimeUpPopup);
 
 	updateDisplay();
 });
+
 
 //now the volume converter page, GPT: I want the users to choose any two units and input number to get it converted to the other
 document.addEventListener("DOMContentLoaded", function () {
@@ -351,4 +430,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		animateNumberChange(toInput, converted);
 	});
+});
+
+//sound effects for buttons, helped by GPT
+document.addEventListener("DOMContentLoaded", () => {
+	const clickSound = document.querySelector(".button-sound");
+	const clickables = document.querySelectorAll('.send-btn, .timer-button button, .volume-convert-unit button');
+
+	if (clickSound) {
+		clickables.forEach(el => {
+			el.addEventListener('click', () => {
+				try {
+					clickSound.currentTime = 0; // rewind to start
+					clickSound.play().catch(err => console.warn("Click sound blocked:", err));
+				} catch (error) {
+					console.warn("Error playing click sound:", error);
+				}
+			});
+		});
+	}
+});
+
+
+//sound effects for function buttons, copied from above
+document.addEventListener("DOMContentLoaded", () => {
+	const clickSound = document.querySelector(".function-click");
+	const clickables = document.querySelectorAll('.generate-mystery-recipe-button, .source-button, .convert-click, .start-and-pause-buttons img, .popup-done-btn, .convert-volume-btn');
+
+	if (clickSound) {
+		clickables.forEach(el => {
+			el.addEventListener('click', () => {
+				try {
+					clickSound.currentTime = 0; // rewind to start
+					clickSound.play().catch(err => console.warn("Click sound blocked:", err));
+				} catch (error) {
+					console.warn("Error playing click sound:", error);
+				}
+			});
+		});
+	}
 });
