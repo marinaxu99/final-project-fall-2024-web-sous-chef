@@ -76,9 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-
-
-
 //your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
 document.addEventListener("DOMContentLoaded", async () => {
 	const outputBox = document.querySelector(".recipe-reveal-box");
@@ -286,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	function showTimeUpPopup() {
-		popup.classList.remove('hidden');
+		popup.classList.remove('hidden-popup');
 		popup.classList.add('show');
 
 		// Vibrate
@@ -313,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function hideTimeUpPopup() {
 		popup.classList.remove('show');
-		popup.classList.add('hidden');
+		popup.classList.add('hidden-popup');
 		clearInterval(overtimeInterval);
 	}
 
@@ -433,4 +430,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		animateNumberChange(toInput, converted);
 	});
+});
+
+//sound effects for buttons, helped by GPT
+document.addEventListener("DOMContentLoaded", () => {
+	const clickSound = document.querySelector(".button-sound");
+	const clickables = document.querySelectorAll('.send-btn, .timer-button button, .volume-convert-unit button');
+
+	if (clickSound) {
+		clickables.forEach(el => {
+			el.addEventListener('click', () => {
+				try {
+					clickSound.currentTime = 0; // rewind to start
+					clickSound.play().catch(err => console.warn("Click sound blocked:", err));
+				} catch (error) {
+					console.warn("Error playing click sound:", error);
+				}
+			});
+		});
+	}
+});
+
+
+//sound effects for function buttons, copied from above
+document.addEventListener("DOMContentLoaded", () => {
+	const clickSound = document.querySelector(".function-click");
+	const clickables = document.querySelectorAll('.generate-mystery-recipe-button, .source-button, .convert-click, .start-and-pause-buttons img, .popup-done-btn, .convert-volume-btn');
+
+	if (clickSound) {
+		clickables.forEach(el => {
+			el.addEventListener('click', () => {
+				try {
+					clickSound.currentTime = 0; // rewind to start
+					clickSound.play().catch(err => console.warn("Click sound blocked:", err));
+				} catch (error) {
+					console.warn("Error playing click sound:", error);
+				}
+			});
+		});
+	}
 });

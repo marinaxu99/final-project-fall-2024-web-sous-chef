@@ -41,7 +41,7 @@ nav {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 2vw;
+	padding: 4vw;
 }
 
 /*a No-Scroll, Screen-Fitting Website, got from ChatGPT, prompt: how can I create a website that does not scroll (adapt to phone screen)*/
@@ -87,6 +87,10 @@ button:hover {
 	color: #ffffff;
 }
 
+button:active {
+	transform: scale(0.95);
+}
+
 /*typography*/
 .chat-robot p,
 .chat-robot-reveal p {
@@ -123,6 +127,16 @@ button,
 	font-style: normal;
 	font-size: 0.8rem;
 	text-transform: lowercase;
+}
+
+nav a {
+	text-decoration: none;
+	color: black;
+	transition: transform 0.2s ease;
+}
+
+nav a:hover {
+	transform: scale(1.1);
 }
 
 input[type="number"] {
@@ -651,6 +665,7 @@ input[type="text"] {
 	box-shadow: 2px 2px 0px #000;
 }
 
+
 /*Mystery Box PAGE*/
 .mystery-container {
 	display: flex;
@@ -893,7 +908,8 @@ input[type="text"] {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin-top: 10vh;
+	margin-top: auto;
+	margin-bottom: 8vh;
 }
 
 .number-container img {
@@ -959,7 +975,8 @@ input[type="text"] {
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
-	margin-top: 15vh;
+	margin-top: auto;
+	margin-bottom: 5vh;
 	width: 100%;
 }
 
@@ -1192,7 +1209,8 @@ input[type="text"] {
 	align-items: center;
 	justify-content: center;
 	gap: 1rem;
-	margin-top: 15vh;
+	margin-top: auto;
+	margin-bottom: 3vh;
 }
 
 .volume-convert-unit {

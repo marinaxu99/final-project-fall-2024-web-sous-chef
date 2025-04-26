@@ -92,3 +92,22 @@ Format the instructions in bullet points. Make it easy to copy.`;
 		});
 	}
 });
+
+//sound effects for buttons, helped by GPT
+document.addEventListener("DOMContentLoaded", () => {
+	const clickSound = document.querySelector(".button-sound");
+	const clickables = document.querySelectorAll('button');
+
+	if (clickSound) {
+		clickables.forEach(el => {
+			el.addEventListener('click', () => {
+				try {
+					clickSound.currentTime = 0; // rewind to start
+					clickSound.play().catch(err => console.warn("Click sound blocked:", err));
+				} catch (error) {
+					console.warn("Error playing click sound:", error);
+				}
+			});
+		});
+	}
+});
