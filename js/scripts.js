@@ -418,8 +418,21 @@ document.addEventListener("DOMContentLoaded", function () {
 		const fromInput = lastChanged === "left" ? inputs[0] : inputs[1];
 		const toInput = lastChanged === "left" ? inputs[1] : inputs[0];
 
-		const inputValue = parseFloat(fromInput.value);
-		if (isNaN(inputValue)) return;
+		// Support plain numbers and simple fractions
+		let inputValue = fromInput.value.trim();
+		if (inputValue.includes('/')) {
+			const [numerator, denominator] = inputValue.split('/').map(Number);
+			if (!isNaN(numerator) && !isNaN(denominator) && denominator !== 0) {
+				inputValue = numerator / denominator;
+			} else {
+				alert('Invalid fraction format.');
+				return;
+			}
+		} else {
+			inputValue = parseFloat(inputValue);
+			if (isNaN(inputValue)) return;
+		}
+
 
 		const inML = inputValue * conversionToML[fromUnit];
 		const converted = inML / conversionToML[toUnit];
