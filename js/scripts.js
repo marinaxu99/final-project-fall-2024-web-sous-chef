@@ -105,7 +105,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 				const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
 
 				outputBox.innerHTML = `
-				<p>Here is a popular one!</p>
 					<p><strong>🍽️ ${title}</strong></p>
 					<p><em>by ${channel}</em></p>
 					<div class="iframe-wrapper">
