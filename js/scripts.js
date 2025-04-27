@@ -287,11 +287,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		popup.classList.remove('hidden-popup');
 		popup.classList.add('show');
 
-		// Vibrate
-		if (navigator.vibrate) {
-			navigator.vibrate([500, 200, 500]);
-		}
-
 		// Start overtime counter
 		overtimeSeconds = 0;
 		overtimeCount.textContent = "0 sec";
