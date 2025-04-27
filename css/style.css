@@ -37,9 +37,9 @@ img {
 }
 
 .iframe-wrapper iframe {
-	width: 50%;
+	width: 80%;
 	height: auto;
-	aspect-ratio: auto;
+	aspect-ratio: 16 / 9;
 	border: none;
 	display: block;
 	margin: 1rem auto;
@@ -776,13 +776,14 @@ input[type="text"] {
 .recipe-reveal-box p {
 	line-height: 1.2rem;
 	height: auto;
+	padding: 1rem;
 }
 
 .recipe-buttons {
 	display: flex;
 	flex-direction: row;
 	margin-top: auto;
-	margin-bottom: 20px;
+	margin-bottom: 10vh;
 	align-items: center;
 	justify-content: center;
 	gap: 20px;
