@@ -33,6 +33,7 @@ img {
 	width: 60vw;
 	max-width: 600px;
 	margin: 0 auto;
+	aspect-ratio: 16 / 9;
 }
 
 .iframe-wrapper iframe {
