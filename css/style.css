@@ -774,9 +774,9 @@ input[type="text"] {
 }
 
 .recipe-reveal-box p {
-	line-height: 1.2rem;
+	line-height: 1rem;
 	height: auto;
-	padding: 1rem;
+	padding: 0.5rem;
 }
 
 .recipe-buttons {
