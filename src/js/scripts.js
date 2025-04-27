@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 		try {
 			// Search using viral/trending recipe keywords
-			const query = "trending recipe OR popular recipe OR easy recipes OR quick meals OR korean recipe OR chinese recipe";
+			const query = "recipes OR easy recipes OR quick meals OR meal prep";
 			const response = await fetch(
 				`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&maxResults=10&q=${encodeURIComponent(query)}&order=viewCount&key=${API_KEY}`
 			);
@@ -286,11 +286,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	function showTimeUpPopup() {
 		popup.classList.remove('hidden-popup');
 		popup.classList.add('show');
-
-		// Vibrate
-		if (navigator.vibrate) {
-			navigator.vibrate([500, 200, 500]);
-		}
 
 		// Start overtime counter
 		overtimeSeconds = 0;
