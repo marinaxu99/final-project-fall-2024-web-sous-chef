@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	}
 });
 
-//your mystery recipe page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
+//for reveal page, GPT prompt:I want the page to pull a popular recipe from YouTube, and clicking on the "go to source" button on the bottom jumps right to the source
 document.addEventListener("DOMContentLoaded", async () => {
 	const outputBox = document.querySelector(".recipe-reveal-box");
 	const sourceBtn = document.querySelector(".source-button a");
