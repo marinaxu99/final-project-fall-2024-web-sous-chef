@@ -30,7 +30,7 @@ img {
 }
 
 .iframe-wrapper {
-	width: 60vw;
+	width: 80vw;
 	max-width: 600px;
 	margin: 0 auto;
 	aspect-ratio: 16 / 9;
