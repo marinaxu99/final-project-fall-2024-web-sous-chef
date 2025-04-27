@@ -37,11 +37,12 @@ img {
 }
 
 .iframe-wrapper iframe {
-	width: 100%;
+	width: 50%;
 	height: auto;
 	aspect-ratio: auto;
 	border: none;
 	display: block;
+	margin: 1rem auto;
 }
 
 nav {
