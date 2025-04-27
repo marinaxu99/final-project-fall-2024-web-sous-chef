@@ -111,3 +111,20 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	}
 });
+
+//to solve safari auto-zooming when typing into the user input, got from GPT
+document.addEventListener('touchstart', function (event) {
+	if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+		const viewport = document.querySelector('meta[name="viewport"]');
+		if (viewport) {
+			viewport.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1');
+		}
+	}
+}, false);
+
+document.addEventListener('touchend', function (event) {
+	const viewport = document.querySelector('meta[name="viewport"]');
+	if (viewport) {
+		viewport.setAttribute('content', 'width=device-width, initial-scale=1');
+	}
+}, false);
