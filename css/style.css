@@ -1031,7 +1031,19 @@ input[type="text"] {
 	min-width: 200px;
 }
 
+/*to fix number spacing in timer*/
+.timer-text {
+	font-family: 'Orbitron', sans-serif;
+	font-size: 2rem;
+	text-align: center;
+}
 
+.timer-text .digit {
+	display: inline-block;
+	width: 1ch;
+	/* Equal visual width */
+	text-align: center;
+}
 
 .function-buttons {
 	display: flex;

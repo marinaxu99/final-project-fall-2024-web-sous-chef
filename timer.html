@@ -27,12 +27,19 @@
 				</div>
 				<div class="timer-container">
 					<div class="timer-button">
-						<button class="timer-button-1">1 min</button>
-						<button class="timer-button-2">5 min</button>
-						<button class="timer-button-3">10 min</button>
+						<button class="timer-button-1"> <span class="button-digit">1</span> min</button>
+						<button class="timer-button-2"> <span class="button-digit">5</span> min</button>
+						<button class="timer-button-3"> <span class="button-digit">10</span> min</button>
 					</div>
+					<!--fixing the weird spacing when numbers change, got from GPT: I want the numbers to take up same space, I don't want the background to stretch when number changes-->
 					<div class="timer-display">
-						<p>00:00:00</p>
+						<p class="timer-text">
+							<span class="digit">0</span><span class="digit">1</span>
+							:
+							<span class="digit">3</span><span class="digit">7</span>
+							:
+							<span class="digit">0</span><span class="digit">0</span>
+						</p>
 					</div>
 					<div class="function-buttons">
 						<div class="start-and-pause-buttons">
