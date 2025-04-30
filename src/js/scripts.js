@@ -319,7 +319,21 @@ document.addEventListener("DOMContentLoaded", function () {
 	resetBtn.addEventListener("click", resetTimer);
 	doneBtn.addEventListener("click", hideTimeUpPopup);
 
-	updateDisplay();
+	function updateDisplay() {
+		const hrs = String(Math.floor(totalSeconds / 3600)).padStart(2, "0");
+		const mins = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, "0");
+		const secs = String(totalSeconds % 60).padStart(2, "0");
+
+		const timeStr = hrs + mins + secs;
+		const digits = document.querySelectorAll('.timer-text .digit');
+
+		if (digits.length === 6) {
+			for (let i = 0; i < 6; i++) {
+				digits[i].textContent = timeStr[i];
+			}
+		}
+	}
+
 });
 
 
