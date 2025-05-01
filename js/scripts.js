@@ -433,18 +433,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		// Support plain numbers and simple fractions
 		let inputValue = fromInput.value.trim();
-		if (inputValue.includes('/')) {
-			const [numerator, denominator] = inputValue.split('/').map(Number);
-			if (!isNaN(numerator) && !isNaN(denominator) && denominator !== 0) {
-				inputValue = numerator / denominator;
-			} else {
-				alert('Invalid fraction format.');
+		let numericValue;
+
+		try {
+			// Handle mixed fraction (e.g., "1 1/2")
+			if (/^\d+\s+\d+\/\d+$/.test(inputValue)) {
+				const [whole, fraction] = inputValue.split(' ');
+				const [num, denom] = fraction.split('/').map(Number);
+				numericValue = parseInt(whole) + (num / denom);
+			}
+			// Handle simple fraction (e.g., "3/4")
+			else if (/^\d+\/\d+$/.test(inputValue)) {
+				const [num, denom] = inputValue.split('/').map(Number);
+				numericValue = num / denom;
+			}
+			// Handle decimal number
+			else {
+				numericValue = parseFloat(inputValue);
+			}
+
+			if (isNaN(numericValue)) {
+				alert("Please enter a valid number or fraction (e.g., 1/2 or 1 1/2).");
 				return;
 			}
-		} else {
-			inputValue = parseFloat(inputValue);
-			if (isNaN(inputValue)) return;
+		} catch (err) {
+			alert("Invalid input format.");
+			return;
 		}
+
 
 
 		const inML = inputValue * conversionToML[fromUnit];
